@@ -66,6 +66,15 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
 .f-links svg{width:18px;height:18px;fill:#fff;flex:none}
 .f-copy{margin-top:30px;padding-top:20px;border-top:1px solid #222c47;text-align:center;font-size:13px;color:#cfd6e6}
 @media(max-width:560px){.f-top{flex-direction:column;align-items:flex-start}.f-links a{width:100%}}
+/* oʻqituvchini topish */
+.sgwrap{position:relative}
+.sugg{position:absolute;left:0;right:0;top:calc(100% + 4px);background:#fff;border:1.5px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -16px rgba(42,22,112,.45);z-index:20;max-height:300px;overflow:auto}
+.sugg button{display:block;width:100%;text-align:left;border:0;background:#fff;padding:11px 14px;font:inherit;font-size:16px;color:var(--ink);border-bottom:1px solid #f0f2f7}
+.sugg button:last-child{border-bottom:0}.sugg button:hover{background:#f3efff}
+.sugg small{display:block;color:var(--mut);font-size:13px}
+.sugg .none{padding:12px 14px;color:var(--mut);font-size:15px}
+.tsel{margin-top:10px;background:#f3efff;border:1.5px solid #d6cdfa;border-radius:12px;padding:11px 14px;font-size:15px}
+.tsel b{display:block;color:var(--navy);font-size:17px}.tsel span{color:var(--mut)}
 /* natijalar */
 .navlink{margin-left:auto;text-decoration:none;color:var(--navy);font-size:14px;font-weight:700;background:#eef4f8;padding:8px 14px;border-radius:99px}
 .board{padding-top:44px}.board h2{font-family:'Times New Roman',Times,serif;font-size:30px;color:var(--navy)}.bs{color:var(--mut);margin:2px 0 16px}
@@ -164,6 +173,24 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
   .nav{grid-template-columns:repeat(6,1fr);gap:9px}.nv{width:42px;height:42px}
   .timer{font-size:40px}.qtitle{font-size:13px}
 }
+
+.sched,.board{scroll-margin-top:70px}.sched{padding-top:44px}.sched h2{font-size:30px;color:var(--navy)}
+.today{background:linear-gradient(135deg,#e8f8ef,#f2fbf6);border:1.5px solid #b9e6cc;border-radius:16px;padding:16px 18px;margin:10px 0 18px}
+.today h3{font-size:18px;color:#12683c;margin-bottom:8px}
+.today .tl{display:flex;flex-wrap:wrap;gap:8px}
+.tchip{background:#fff;border:1.5px solid #b9e6cc;border-radius:10px;padding:7px 12px;font-size:15px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.tchip:hover{background:#f0fff6}
+.tnone{color:var(--mut);font-size:15px}
+.sbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}.sbar select{max-width:420px}
+.srow{display:grid;grid-template-columns:48px 1fr 130px 190px;gap:12px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+.srow.on{border-color:#6fcf97;box-shadow:0 0 0 3px rgba(27,154,89,.12)}
+.srow .n{width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700}
+.srow.on .n{background:var(--ok)}.srow.past .n{background:#9aa6b8}
+.srow .tt{font-size:16px;line-height:1.3}.srow .tt small{display:block;color:var(--mut);font-size:13px}
+.srow .dt{font-weight:700;color:var(--navy)}
+.badge{display:inline-block;padding:5px 11px;border-radius:999px;font-size:13px;font-weight:700;text-align:center}
+.b-on{background:#d8f5e5;color:#12683c}.b-up{background:#e6eefc;color:#1d4ed8}.b-past{background:#eceff3;color:#5b6b82}.b-wait{background:#fff3d6;color:#8a5a00}
+@media(max-width:700px){.srow{grid-template-columns:40px 1fr}.srow .dt,.srow .st{grid-column:2}}
 </style>
 </head>
 <body>
@@ -173,6 +200,7 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
   <header class="top"><div class="wrap">
     <span class="logo">KRK</span>
     <div>Kasbiy rivojlanish kuni<small>Qoʻshkoʻpir tumani maktabgacha va maktab taʼlimi boʻlimi</small></div>
+    <a href="#sched" class="navlink">📅 Jadval</a>
     <a href="#board" class="navlink">🏆 Natijalar</a>
   </div></header>
 
@@ -187,12 +215,13 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
       <div id="resume" class="resume hide"></div>
       <h2>Testni boshlash</h2>
       <p class="s">Maʼlumotlaringizni kiriting</p>
-      <label for="fName">F.I.Sh.</label>
-      <input id="fName" autocomplete="name" placeholder="Familiya Ism Sharif">
-      <label for="fOrg">Maktab</label>
-      <input id="fOrg" placeholder="Masalan: 12-son maktab" list="schools">
-      <datalist id="schools"></datalist>
-      <label for="fTest">Fan (test)</label>
+      <label for="fName">F.I.Sh. (roʻyxatdan toping)</label>
+      <div class="sgwrap"><input id="fName" autocomplete="off" placeholder="Familiya yoki ismingizni yozing" oninput="suggest()" onfocus="suggest()">
+        <div id="sugg" class="sugg hide"></div></div>
+      <div id="tCard" class="tsel hide"></div>
+      <div id="orgWrap" class="hide"><label for="fOrg">Maktab</label>
+        <input id="fOrg" placeholder="Masalan: 12-son maktab"></div>
+      <label for="fTest">Test (mavzu)</label>
       <select id="fTest"><option value="">Yuklanmoqda...</option></select>
       <label for="fPin">PIN-kod</label>
       <div class="pinbox"><input id="fPin" type="password" autocomplete="off" placeholder="Metodist bergan PIN-kod"><button type="button" onclick="togglePin()" aria-label="Koʻrsatish">👁</button></div>
@@ -203,11 +232,18 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
 
   <div class="wrap">
     <div class="steps">
-      <div class="step"><h4>Maʼlumot kiriting</h4><p>F.I.Sh., maktab va oʻz fan yoʻnalishingizni tanlang.</p></div>
-      <div class="step"><h4>PIN-kod va test</h4><p>Ustozingiz bergan PIN-kodni kiriting. Vaqt hisoblagichi ishga tushadi.</p></div>
+      <div class="step"><h4>Maʼlumot kiriting</h4><p>F.I.Sh. ingizni roʻyxatdan toping — maktab va yoʻnalishingiz oʻzi chiqadi.</p></div>
+      <div class="step"><h4>Mavzu va PIN-kod</h4><p>Ochilgan mavzu testini tanlab, PIN-kodni kiriting. Vaqt hisoblagichi ishga tushadi.</p></div>
       <div class="step"><h4>Natija va tahlil</h4><p>Testni yakunlang — ball, foiz va xatolar tahlilini koʻring.</p></div>
     </div>
   </div>
+  <section class="wrap sched" id="sched">
+    <h2>Test topshirish jadvali</h2>
+    <p class="bs">Test faqat belgilangan kuni ochiq boʻladi (buyruqning 15-ilovasi boʻyicha: mavzuning KRS kuni). Boshqa kunlari yopiq.</p>
+    <div class="today"><h3>🟢 Bugun ochiq testlar</h3><div class="tl" id="todayList"><span class="tnone">Yuklanmoqda...</span></div></div>
+    <div class="sbar"><label for="sDir" style="margin:0"><b>Yoʻnalishingiz:</b></label><select id="sDir" onchange="drawSched()"></select></div>
+    <div id="schedRows"></div>
+  </section>
   <section class="wrap board" id="board">
     <h2>Natijalar</h2>
     <p class="bs">Test topshirgan pedagoglar natijalari — topshirish tartibida.</p>
@@ -295,7 +331,7 @@ const API = window.KRK_API;
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const L = ['A','B','C','D'], KEY = 'krk_state_v1';
-let S = null, tick = null, lastT = 0, sending = false, RES = null, tests = [], BOARD = [], BN = 30;
+let S = null, tick = null, lastT = 0, sending = false, RES = null, tests = [], BOARD = [], BN = 30, TCH = [], SEL = null;
 
 function show(id){ ['home','quiz','sending','result','review'].forEach(x => $(x).classList.toggle('hide', x !== id)); window.scrollTo(0,0); }
 function api(body){ return fetch(API, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)}).then(r => r.json()); }
@@ -309,12 +345,13 @@ function err(m){ $('fErr').textContent = m || ''; }
 async function init(){
   if (!API || API.indexOf('PASTE') >= 0){ $('fTest').innerHTML='<option value="">Sayt sozlanmagan (config.js)</option>'; err('config.js ichiga Apps Script manzilini qoʻying.'); return; }
   try{
-    const r = await (await fetch(API + '?action=tests')).json();
+    const [r, t] = await Promise.all([fetch(API + '?action=tests').then(x => x.json()), fetch(API + '?action=teachers').then(x => x.json()).catch(() => ({success:false}))]);
     if (!r.success) throw new Error(r.msg);
-    tests = r.data;
-    $('fTest').innerHTML = '<option value="">Testni tanlang</option>' + tests.map(t =>
-      `<option value="${esc(t.name)}" ${t.open?'':'disabled'}>${esc(t.name)} (${t.count} ta savol, ${t.minutes} daq)${t.open?'':' — yopiq'}</option>`).join('');
-  }catch(e){ $('fTest').innerHTML='<option value="">Yuklab boʻlmadi</option>'; err('Testlar roʻyxatini yuklab boʻlmadi. Sahifani yangilang.'); }
+    tests = r.data; TCH = (t && t.success) ? t.data : [];
+    $('orgWrap').classList.toggle('hide', TCH.length > 0);
+    if (TCH.length) $('fName').placeholder = 'Familiya yoki ismingizni yozing'; else $('fName').placeholder = 'Familiya Ism Sharif';
+    buildTests(); drawSched();
+  }catch(e){ $('fTest').innerHTML='<option value="">Yuklab boʻlmadi</option>'; err('Maʼlumotlarni yuklab boʻlmadi. Sahifani yangilang.'); }
   loadBoard();
   try{
     const s = JSON.parse(localStorage.getItem(KEY) || 'null');
@@ -327,11 +364,77 @@ async function init(){
     }
   }catch(e){}
 }
+const nrm = x => String(x||'').toLowerCase().replace(/[\s'ʻʼ‘’`´.,-]/g,'');
+function suggest(){
+  if (!TCH.length) return;
+  const box = $('sugg'), v = $('fName').value.trim().toLowerCase();
+  if (SEL && nrm(SEL.name) !== nrm($('fName').value)){ SEL = null; $('tCard').classList.add('hide'); buildTests(); }
+  if (SEL){ box.classList.add('hide'); return; }
+  if (v.length < 2){ box.classList.add('hide'); return; }
+  const parts = v.split(/\s+/);
+  const list = TCH.map((x,i) => ({x,i})).filter(o => { const n = o.x.name.toLowerCase(); return parts.every(p => n.includes(p)); }).slice(0, 8);
+  box.innerHTML = list.length ? list.map(o => `<button type="button" onclick="pickT(${o.i})">${esc(o.x.name)}<small>${esc(o.x.school)}${o.x.dir ? ' · ' + esc(o.x.dir) : ''}</small></button>`).join('')
+    : '<div class="none">Roʻyxatda topilmadi. Ismingizni tekshiring yoki metodistga murojaat qiling.</div>';
+  box.classList.remove('hide');
+}
+
+/* ---------- jadval ---------- */
+const mnum = t => parseInt((String(t.name).match(/(\d+)-mavzu/)||[0,0])[1],10) || 0;
+function stOf(t){
+  if (t.closed) return ['b-past','Yopiq','past'];
+  if (t.state === 'open') return t.count > 0 ? ['b-on','🟢 Hozir ochiq','on'] : ['b-wait','⏳ Savollar tayyorlanmoqda','wait'];
+  if (t.state === 'upcoming') return ['b-up','Ochiladi: ' + t.opens,'up'];
+  return ['b-past','Muddat tugagan','past'];
+}
+function drawSched(){
+  const dirs = [...new Set(tests.map(t => t.dir).filter(Boolean))];
+  const sd = $('sDir');
+  if (!sd.options.length){
+    sd.innerHTML = dirs.map(d => `<option>${esc(d)}</option>`).join('');
+    if (SEL && SEL.dir){ const m = dirs.find(d => nrm(d) === nrm(SEL.dir)); if (m) sd.value = m; }
+  }
+  const on = tests.filter(t => t.state === 'open' && !t.closed && t.count > 0);
+  $('todayList').innerHTML = on.length ? on.map(t => `<button class="tchip" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">${esc(t.name)}</button>`).join('') : '<span class="tnone">Bugun ochiq test yoʻq.</span>';
+  const list = tests.filter(t => t.dir === sd.value).sort((a,b) => mnum(a) - mnum(b));
+  $('schedRows').innerHTML = list.map(t => {
+    const [bc, bt, k] = stOf(t);
+    const btn = k === 'on' ? `<button class="btn" style="padding:7px 14px;font-size:14px;margin-top:6px" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">Yechish →</button>` : '';
+    return `<div class="srow ${k==='on'?'on':''} ${k==='past'?'past':''}"><div class="n">${mnum(t)}</div>
+      <div class="tt">${mnum(t)}-mavzu${t.topic ? `<small>${esc(t.topic)}</small>` : ''}</div>
+      <div class="dt">${esc(t.opens)}</div><div class="st"><span class="badge ${bc}">${bt}</span><br>${btn}</div></div>`;
+  }).join('') || '<div class="tnone">Maʼlumot yoʻq.</div>';
+}
+function pickTest(name){
+  if (TCH.length && !SEL){ err('Avval F.I.Sh. ingizni roʻyxatdan tanlang.'); window.scrollTo({top:0,behavior:'smooth'}); $('fName').focus(); return; }
+  const o = [...$('fTest').options].find(x => x.value === name && !x.disabled);
+  if (!o){ err('Bu test sizning yoʻnalishingiz uchun emas.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+  $('fTest').value = name; err(''); window.scrollTo({top:0,behavior:'smooth'});
+}
+function pickT(i){
+  SEL = TCH[i]; $('fName').value = SEL.name; $('sugg').classList.add('hide');
+  $('tCard').innerHTML = `<b>${esc(SEL.name)}</b><span>${esc(SEL.school)}${SEL.dir ? ' · ' + esc(SEL.dir) : ''}</span>`;
+  $('tCard').classList.remove('hide'); err(''); buildTests();
+  { const m = [...$('sDir').options].find(o => nrm(o.value) === nrm(SEL.dir||'')); if (m){ $('sDir').value = m.value; drawSched(); } }
+}
+document.addEventListener('click', e => { if (!e.target.closest('.sgwrap')) $('sugg').classList.add('hide'); });
+function buildTests(){
+  const sel = $('fTest');
+  if (TCH.length && !SEL){ sel.innerHTML = '<option value="">Avval ismingizni tanlang</option>'; return; }
+  const mine = tests.filter(t => !TCH.length || !SEL || !t.dir || nrm(t.dir) === 'hammasi' || nrm(t.dir) === nrm(SEL.dir));
+  if (!mine.length){ sel.innerHTML = '<option value="">Siz uchun test topilmadi</option>'; return; }
+  const vis = mine.filter(t => t.state !== 'past' || t.open).sort((a,b) => (stOf(a)[2]==='on'?0:1) - (stOf(b)[2]==='on'?0:1) || mnum(a) - mnum(b));
+  sel.innerHTML = '<option value="">Testni tanlang</option>' + vis.map(t => {
+    const k = stOf(t)[2], ok = k === 'on';
+    const tag = ok ? '' : ' — ' + stOf(t)[1].replace('🟢 ','');
+    return `<option value="${esc(t.name)}" ${ok?'':'disabled'}>${esc(t.name)}${ok?` (${t.count} ta savol, ${t.minutes} daq)`:''}${tag}</option>`;
+  }).join('');
+}
 function dropSaved(){ try{localStorage.removeItem(KEY);}catch(e){} S=null; $('resume').classList.add('hide'); }
 
 async function startTest(){
-  const name=$('fName').value.trim(), org=$('fOrg').value.trim(), test=$('fTest').value, pin=$('fPin').value.trim();
-  if (name.split(/\s+/).length < 2) return err('F.I.Sh. ni toʻliq kiriting (familiya va ism).');
+  let name=$('fName').value.trim(), org=$('fOrg').value.trim(); const test=$('fTest').value, pin=$('fPin').value.trim();
+  if (TCH.length){ if (!SEL) return err('Ismingizni roʻyxatdan tanlang.'); name = SEL.name; org = SEL.school; }
+  if (!TCH.length && name.split(/\s+/).length < 2) return err('F.I.Sh. ni toʻliq kiriting (familiya va ism).');
   if (!org) return err('Maktab nomini kiriting.');
   if (!test) return err('Fanni (testni) tanlang.');
   if (!pin) return err('PIN-kodni kiriting.');
@@ -349,9 +452,27 @@ async function startTest(){
 
 /* ---------- test ---------- */
 function mj(el){ if (window.renderMathInElement && el) try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); }catch(e){} }
+const THEMES = {
+  mat:['x²','∫','π','√','sin','θ','log','∑','±'],
+  kim:['H₂O','NaCl','CO₂','pH','O₂','H₂SO₄','Fe','⇌','CH₄'],
+  fiz:['F=ma','E=mc²','U=IR','Ω','λ','v=s/t','ρ','ΔT','g'],
+  bio:['DNK','ATF','RNK','CO₂','O₂','H₂O','pH','♀','♂'],
+  inf:['{ }','</>','1011','if','for','==','&&','#',';'],
+  def:['A)','B)','C)','D)','?','✓','1','2','3']
+};
+const SPOTS = [[24,60,38,-10],[170,48,34,8],[270,104,30,0],[70,168,32,12],[196,176,34,-8],[288,246,38,6],[34,290,34,-6],[150,314,32,10],[236,338,30,0]];
+function themeBg(test){
+  const n = String(test||'').toLowerCase();
+  const k = n.includes('mat') ? 'mat' : n.includes('kim') ? 'kim' : n.includes('fiz') ? 'fiz' : n.includes('biol') ? 'bio' : n.includes('inform') ? 'inf' : 'def';
+  const t = THEMES[k].map((w,i) => { const [x,y,f,r] = SPOTS[i]; const fs = w.length > 4 ? Math.round(f*0.7) : f;
+    return `<text x="${x}" y="${y}" font-size="${fs}" transform="rotate(${r} ${x} ${y})">${w.replace(/&/g,'&amp;').replace(/</g,'&lt;')}</text>`; }).join('');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" fill="#2a1670" fill-opacity=".075" font-family="'Times New Roman',serif" font-style="italic">${t}</svg>`;
+  return 'url("data:image/svg+xml,' + encodeURIComponent(svg) + '")';
+}
 function exitQuiz(){ if (S){ stamp(); save(); } clearInterval(tick); location.reload(); }
 function enterQuiz(){
   show('quiz');
+  $('quiz').style.backgroundImage = themeBg(S.test);
   $('qTitle').textContent = 'KRK test — ' + S.test;
   $('who').innerHTML = `<b>${esc(S.user.name)}</b><span>${esc(S.user.org)} | ${esc(S.test)}</span>`;
   buildNav(); renderQ(); lastT = Date.now();
@@ -455,7 +576,6 @@ async function loadBoard(){
     BOARD = r.data;
     const fans = [...new Set(BOARD.map(x => x.test))].sort();
     $('bFan').innerHTML = '<option value="">Barcha fanlar</option>' + fans.map(f => `<option>${esc(f)}</option>`).join('');
-    $('schools').innerHTML = [...new Set(BOARD.map(x => x.school).filter(Boolean))].sort().map(x => `<option value="${esc(x)}">`).join('');
     drawBoard();
   }catch(e){ $('bRows').innerHTML = '<div class="bempty">Natijalarni yuklab boʻlmadi.</div>'; }
 }
