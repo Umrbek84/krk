@@ -239,8 +239,8 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
   </div>
   <section class="wrap sched" id="sched">
     <h2>Test topshirish jadvali</h2>
-    <p class="bs">Test faqat belgilangan kuni ochiq boʻladi (buyruqning 15-ilovasi boʻyicha: mavzuning KRS kuni). Boshqa kunlari yopiq.</p>
-    <div class="today"><h3>🟢 Bugun ochiq testlar</h3><div class="tl" id="todayList"><span class="tnone">Yuklanmoqda...</span></div></div>
+    <p class="bs">Har bir mavzu testi buyruqning 15-ilovasi boʻyicha mavzuning KRS kunida ochiladi va keyin ochiq qoladi. Muddati hali kelmagan testlar yopiq turadi.</p>
+    <div class="today"><h3>🟢 Hozir ochiq testlar</h3><div class="tl" id="todayList"><span class="tnone">Yuklanmoqda...</span></div></div>
     <div class="sbar"><label for="sDir" style="margin:0"><b>Yoʻnalishingiz:</b></label><select id="sDir" onchange="drawSched()"></select></div>
     <div id="schedRows"></div>
   </section>
@@ -384,7 +384,7 @@ function stOf(t){
   if (t.closed) return ['b-past','Yopiq','past'];
   if (t.state === 'open') return t.count > 0 ? ['b-on','🟢 Hozir ochiq','on'] : ['b-wait','⏳ Savollar tayyorlanmoqda','wait'];
   if (t.state === 'upcoming') return ['b-up','Ochiladi: ' + t.opens,'up'];
-  return ['b-past','Muddat tugagan','past'];
+  return ['b-past','Yopilgan','past'];
 }
 function drawSched(){
   const dirs = [...new Set(tests.map(t => t.dir).filter(Boolean))];
@@ -394,7 +394,7 @@ function drawSched(){
     if (SEL && SEL.dir){ const m = dirs.find(d => nrm(d) === nrm(SEL.dir)); if (m) sd.value = m; }
   }
   const on = tests.filter(t => t.state === 'open' && !t.closed && t.count > 0);
-  $('todayList').innerHTML = on.length ? on.map(t => `<button class="tchip" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">${esc(t.name)}</button>`).join('') : '<span class="tnone">Bugun ochiq test yoʻq.</span>';
+  $('todayList').innerHTML = on.length ? on.map(t => `<button class="tchip" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">${esc(t.name)}</button>`).join('') : '<span class="tnone">Hozircha ochiq test yoʻq.</span>';
   const list = tests.filter(t => t.dir === sd.value).sort((a,b) => mnum(a) - mnum(b));
   $('schedRows').innerHTML = list.map(t => {
     const [bc, bt, k] = stOf(t);
@@ -422,8 +422,8 @@ function buildTests(){
   if (TCH.length && !SEL){ sel.innerHTML = '<option value="">Avval ismingizni tanlang</option>'; return; }
   const mine = tests.filter(t => !TCH.length || !SEL || !t.dir || nrm(t.dir) === 'hammasi' || nrm(t.dir) === nrm(SEL.dir));
   if (!mine.length){ sel.innerHTML = '<option value="">Siz uchun test topilmadi</option>'; return; }
-  const vis = mine.filter(t => t.state !== 'past' || t.open).sort((a,b) => (stOf(a)[2]==='on'?0:1) - (stOf(b)[2]==='on'?0:1) || mnum(a) - mnum(b));
-  sel.innerHTML = '<option value="">Testni tanlang</option>' + vis.map(t => {
+  const vis = mine.filter(t => stOf(t)[2] === 'on').sort((a,b) => (stOf(a)[2]==='on'?0:1) - (stOf(b)[2]==='on'?0:1) || mnum(a) - mnum(b));
+  sel.innerHTML = '<option value="">' + (vis.length ? 'Testni tanlang' : 'Hozircha ochiq test yoʻq') + '</option>' + vis.map(t => {
     const k = stOf(t)[2], ok = k === 'on';
     const tag = ok ? '' : ' — ' + stOf(t)[1].replace('🟢 ','');
     return `<option value="${esc(t.name)}" ${ok?'':'disabled'}>${esc(t.name)}${ok?` (${t.count} ta savol, ${t.minutes} daq)`:''}${tag}</option>`;
