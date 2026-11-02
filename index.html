@@ -368,7 +368,7 @@ async function finish(){
   try{
     const r = await api({action:'submit', token:S.token, answers:S.ans, times, cheats:S.cheats});
     if (!r.success) throw new Error(r.msg);
-    RES = r; dropSaved(); showResult();
+    RES = r; try{localStorage.removeItem(KEY);}catch(e){} $('resume').classList.add('hide'); showResult();
   }catch(e){
     $('sendOk').classList.add('hide'); $('sendFail').classList.remove('hide'); $('sendMsg').textContent = e.message || 'Aloqa xatosi';
   }
