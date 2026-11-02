@@ -113,8 +113,8 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
 .qbtns{display:flex;gap:14px;justify-content:center;margin-top:18px}
 .qbtns .btn{min-width:150px;flex:0 1 190px;border-radius:8px;font-family:'Times New Roman',Times,serif}
 .qbtns .btn:not(.ghost){background:#1668f2}
-.nav{display:grid;grid-template-columns:repeat(6,1fr);gap:11px;justify-items:center}
-.nv{width:46px;height:46px;border-radius:50%;border:2px solid #dfe3ee;background:#fff;font:700 15px 'Times New Roman',Times,serif;color:#555;box-shadow:0 2px 6px rgba(42,22,112,.08)}
+.qnv{display:grid;grid-template-columns:repeat(6,1fr);gap:11px;justify-items:center}
+.nv{flex:none;padding:0;width:46px;height:46px;border-radius:50%;border:2px solid #dfe3ee;background:#fff;font:700 15px 'Times New Roman',Times,serif;color:#555;box-shadow:0 2px 6px rgba(42,22,112,.08)}
 .nv.done{background:var(--navy2);border-color:var(--navy2);color:#fff}
 .nv.cur{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--navy2);border-color:var(--navy2)}
 .legend{display:flex;gap:16px;justify-content:center;font:12px 'Times New Roman',Times,serif;color:var(--mut)}
@@ -170,7 +170,7 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
   .qlayout{grid-template-columns:1fr;min-height:0}
   .qmain{padding:14px 12px}.qside{border-left:0;border-top:1px solid var(--line);order:2}
   .qcard{padding:20px 16px}.qtext{font-size:20px}.opt{font-size:18px;padding:13px 14px}
-  .nav{grid-template-columns:repeat(6,1fr);gap:9px}.nv{width:42px;height:42px}
+  .qnv{grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:9px}.nv{width:42px;height:42px}
   .timer{font-size:40px}.qtitle{font-size:13px}
 }
 
@@ -326,7 +326,7 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
       <div class="qbtns"><button class="btn ghost" onclick="go(-1)">← Oldingi</button><button class="btn" onclick="go(1)">Keyingi →</button></div>
     </div>
     <aside class="qside">
-      <div><div class="nav" id="nav"></div>
+      <div><div class="qnv" id="nav"></div>
         <div class="legend" style="margin-top:14px"><span><i></i>Javobsiz</span><span><i class="d"></i>Javob berilgan</span><span><i class="c"></i>Joriy</span></div></div>
       <div class="tcard" id="tcard"><small>⏱ QOLGAN VAQT</small><div class="timer" id="timer">00:00</div><div class="tbar"><div id="tbarIn"></div></div></div>
       <button class="finbtn" onclick="askFinish()">TUGATISH</button>
