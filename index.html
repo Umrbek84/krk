@@ -189,7 +189,7 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
 .srow .tt{font-size:16px;line-height:1.3}.srow .tt small{display:block;color:var(--mut);font-size:13px}
 .srow .dt{font-weight:700;color:var(--navy)}
 .badge{display:inline-block;padding:5px 11px;border-radius:999px;font-size:13px;font-weight:700;text-align:center}
-.b-on{background:#d8f5e5;color:#12683c}.b-up{background:#e6eefc;color:#1d4ed8}.b-past{background:#eceff3;color:#5b6b82}.b-wait{background:#fff3d6;color:#8a5a00}
+.b-on{background:#d8f5e5;color:#12683c}.b-up{background:#e6eefc;color:#1d4ed8}.b-past{background:#eceff3;color:#5b6b82}.b-wait{background:#fde2e2;color:#b42318;font-weight:700}.srow.wait{border-color:#f0a3a3;background:#fff5f5}.miss{margin-top:12px;background:#fff5f5;border:2px solid #e05252;border-radius:12px;padding:12px 14px;color:#b42318}.miss h3{margin:0 0 6px;font-size:16px}.miss div{font-size:14px;line-height:1.7}
 @media(max-width:700px){.srow{grid-template-columns:40px 1fr}.srow .dt,.srow .st{grid-column:2}}
 
 /* ---- yangi dizayn ---- */
@@ -243,9 +243,15 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
       <div id="resume" class="resume hide"></div>
       <h2>Testni boshlash</h2>
       <p class="s">Maʼlumotlaringizni kiriting</p>
-      <label for="fName">F.I.Sh. (roʻyxatdan toping)</label>
-      <div class="sgwrap"><input id="fName" autocomplete="off" placeholder="Familiya yoki ismingizni yozing" oninput="suggest()" onfocus="suggest()">
-        <div id="sugg" class="sugg hide"></div></div>
+      <div id="pickWrap">
+      <label for="fDir">Yoʻnalish</label>
+      <select id="fDir" onchange="pickDir()"><option value="">Yoʻnalishni tanlang</option></select>
+      <label for="fSch">Maktab</label>
+      <select id="fSch" onchange="pickSch()" disabled><option value="">Avval yoʻnalishni tanlang</option></select>
+      <label for="fTch">F.I.Sh.</label>
+      <select id="fTch" onchange="pickTch()" disabled><option value="">Avval maktabni tanlang</option></select>
+      </div>
+      <input id="fName" type="hidden"><div id="sugg" class="sugg hide"></div>
       <div id="tCard" class="tsel hide"></div>
       <div id="orgWrap" class="hide"><label for="fOrg">Maktab</label>
         <input id="fOrg" placeholder="Masalan: 12-son maktab"></div>
@@ -272,6 +278,7 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
     <h2>Test topshirish jadvali</h2>
     <p class="bs">Har bir mavzu testi buyruqning 15-ilovasi boʻyicha mavzuning KRS kunida ochiladi va keyin ochiq qoladi. Muddati hali kelmagan testlar yopiq turadi.</p>
     <div class="today"><h3>🟢 Hozir ochiq testlar</h3><div class="tl" id="todayList"><span class="tnone">Yuklanmoqda...</span></div></div>
+    <div class="miss hide" id="missBox"></div>
     <div class="sbar"><label for="sDir" style="margin:0"><b>Yoʻnalishingiz:</b></label><select id="sDir" onchange="drawSched()"></select></div>
     <div id="schedRows"></div>
   </section>
@@ -379,7 +386,7 @@ async function init(){
     const [r, t] = await Promise.all([fetch(API + '?action=tests').then(x => x.json()), fetch(API + '?action=teachers').then(x => x.json()).catch(() => ({success:false}))]);
     if (!r.success) throw new Error(r.msg);
     tests = r.data; TCH = (t && t.success) ? t.data : [];
-    $('orgWrap').classList.toggle('hide', TCH.length > 0);
+    $('orgWrap').classList.toggle('hide', TCH.length > 0); $('pickWrap').classList.toggle('hide', !TCH.length); initPick();
     if (TCH.length) $('fName').placeholder = 'Familiya yoki ismingizni yozing'; else $('fName').placeholder = 'Familiya Ism Sharif';
     buildTests(); drawSched();
   }catch(e){ $('fTest').innerHTML='<option value="">Yuklab boʻlmadi</option>'; err('Maʼlumotlarni yuklab boʻlmadi. Sahifani yangilang.'); }
@@ -396,7 +403,8 @@ async function init(){
   }catch(e){}
 }
 const nrm = x => String(x||'').toLowerCase().replace(/[\s'ʻʼ‘’`´.,-]/g,'');
-function suggest(){
+function suggest(){ return; }
+function _suggestOld(){
   if (!TCH.length) return;
   const box = $('sugg'), v = $('fName').value.trim().toLowerCase();
   if (SEL && nrm(SEL.name) !== nrm($('fName').value)){ SEL = null; $('tCard').classList.add('hide'); buildTests(); }
@@ -409,11 +417,35 @@ function suggest(){
   box.classList.remove('hide');
 }
 
+
+/* ---------- roʻyxatdan tanlash: yoʻnalish -> maktab -> F.I.Sh. ---------- */
+const sNum = x => parseInt(String(x).match(/\d+/)||[999],10);
+function fill(id, ph, items, val){ const e = $(id); e.innerHTML = `<option value="">${ph}</option>` + items.map(([v,t]) => `<option value="${esc(String(v))}">${esc(t)}</option>`).join(''); e.disabled = !items.length; if (val !== undefined) e.value = val; }
+function initPick(){
+  if (!TCH.length) return;
+  const dirs = [...new Set(TCH.map(x => x.dir).filter(Boolean))].sort((a,b) => a.localeCompare(b,'uz'));
+  fill('fDir','Yoʻnalishni tanlang', dirs.map(d => [d,d]));
+  fill('fSch','Avval yoʻnalishni tanlang', []); fill('fTch','Avval maktabni tanlang', []);
+}
+function resetSel(){ SEL = null; $('fName').value = ''; $('tCard').classList.add('hide'); buildTests(); }
+function pickDir(){
+  resetSel(); const d = $('fDir').value;
+  const sch = [...new Set(TCH.filter(x => x.dir === d).map(x => x.school))].sort((a,b) => sNum(a) - sNum(b) || a.localeCompare(b));
+  fill('fSch', d ? 'Maktabni tanlang' : 'Avval yoʻnalishni tanlang', d ? sch.map(x => [x,x]) : []);
+  fill('fTch','Avval maktabni tanlang', []);
+}
+function pickSch(){
+  resetSel(); const d = $('fDir').value, m = $('fSch').value;
+  const l = TCH.map((x,i) => [i,x]).filter(([i,x]) => x.dir === d && x.school === m).sort((a,b) => a[1].name.localeCompare(b[1].name,'uz'));
+  fill('fTch', m ? 'F.I.Sh. ingizni tanlang' : 'Avval maktabni tanlang', m ? l.map(([i,x]) => [i,x.name + (/mentor/i.test(x.role||x.note||'') ? ' (mentor)' : '')]) : []);
+}
+function pickTch(){ const v = $('fTch').value; if (v === '') return resetSel(); pickT(+v); }
+
 /* ---------- jadval ---------- */
 const mnum = t => parseInt((String(t.name).match(/(\d+)-mavzu/)||[0,0])[1],10) || 0;
 function stOf(t){
   if (t.closed) return ['b-past','Yopiq','past'];
-  if (t.state === 'open') return t.count > 0 ? ['b-on','🟢 Hozir ochiq','on'] : ['b-wait','⏳ Savollar tayyorlanmoqda','wait'];
+  if (t.state === 'open') return t.count > 0 ? ['b-on','🟢 Hozir ochiq','on'] : ['b-wait','⚠ Savollar tayyor emas (yopiq)','wait'];
   if (t.state === 'upcoming') return ['b-up','Ochiladi: ' + t.opens,'up'];
   return ['b-past','Yopilgan','past'];
 }
@@ -426,23 +458,30 @@ function drawSched(){
   }
   const on = tests.filter(t => t.state === 'open' && !t.closed && t.count > 0);
   $('todayList').innerHTML = on.length ? on.map(t => `<button class="tchip" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">${esc(t.name)}</button>`).join('') : '<span class="tnone">Hozircha ochiq test yoʻq.</span>';
+  const miss = tests.filter(t => !t.closed && t.state === 'open' && !(t.count > 0));
+  const mb = $('missBox');
+  if (miss.length){
+    const g = {}; miss.forEach(t => { (g[t.dir||'-'] = g[t.dir||'-'] || []).push(mnum(t) + '-mavzu'); });
+    mb.innerHTML = '<h3>⚠ Savollari tayyor emas — test yopiq (' + miss.length + ')</h3>' + Object.keys(g).map(d => '<div><b>' + esc(d) + ':</b> ' + g[d].join(', ') + '</div>').join('');
+    mb.classList.remove('hide');
+  } else mb.classList.add('hide');
   const list = tests.filter(t => t.dir === sd.value).sort((a,b) => mnum(a) - mnum(b));
   $('schedRows').innerHTML = list.map(t => {
     const [bc, bt, k] = stOf(t);
     const btn = k === 'on' ? `<button class="btn" style="padding:7px 14px;font-size:14px;margin-top:6px" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">Yechish →</button>` : '';
-    return `<div class="srow ${k==='on'?'on':''} ${k==='past'?'past':''}"><div class="n">${mnum(t)}</div>
+    return `<div class="srow ${k==='on'?'on':''} ${k==='wait'?'wait':''} ${k==='past'?'past':''}"><div class="n">${mnum(t)}</div>
       <div class="tt">${mnum(t)}-mavzu${t.topic ? `<small>${esc(t.topic)}</small>` : ''}</div>
       <div class="dt">${esc(t.opens)}</div><div class="st"><span class="badge ${bc}">${bt}</span><br>${btn}</div></div>`;
   }).join('') || '<div class="tnone">Maʼlumot yoʻq.</div>';
 }
 function pickTest(name){
-  if (TCH.length && !SEL){ err('Avval F.I.Sh. ingizni roʻyxatdan tanlang.'); window.scrollTo({top:0,behavior:'smooth'}); $('fName').focus(); return; }
+  if (TCH.length && !SEL){ err('Avval yoʻnalish, maktab va F.I.Sh. ingizni roʻyxatdan tanlang.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
   const o = [...$('fTest').options].find(x => x.value === name && !x.disabled);
   if (!o){ err('Bu test sizning yoʻnalishingiz uchun emas.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
   $('fTest').value = name; err(''); window.scrollTo({top:0,behavior:'smooth'});
 }
 function pickT(i){
-  SEL = TCH[i]; $('fName').value = SEL.name; $('sugg').classList.add('hide');
+  SEL = TCH[i]; $('fName').value = SEL.name; $('sugg').classList.add('hide'); $('fTch').value = String(i);
   $('tCard').innerHTML = `<b>${esc(SEL.name)}</b><span>${esc(SEL.school)}${SEL.dir ? ' · ' + esc(SEL.dir) : ''}</span>`;
   $('tCard').classList.remove('hide'); err(''); buildTests();
   { const m = [...$('sDir').options].find(o => nrm(o.value) === nrm(SEL.dir||'')); if (m){ $('sDir').value = m.value; drawSched(); } }
