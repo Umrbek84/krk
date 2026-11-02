@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>KRK | Admin panel</title>
+<style>
+:root{--navy:#0b2a4a;--teal:#0e9f8e;--bg:#f1f5f9;--ink:#14213d;--mut:#5b6b82;--line:#dde5ee;--ok:#1b9a59;--bad:#d64545}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+.hide{display:none!important}
+button,input,select{font:inherit}
+button{cursor:pointer;border:0;border-radius:10px;padding:9px 16px;font-weight:600;background:var(--teal);color:#fff}
+button.sec{background:#e7eef6;color:var(--navy)}button.red{background:#fde4e4;color:#b83232}button.on{background:var(--navy);color:#fff}
+input,select{padding:9px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.top{background:var(--navy);color:#fff;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.top b{font-size:17px}.top .r{display:flex;gap:8px}
+.wrap{max-width:1250px;margin:0 auto;padding:18px}
+.card{background:#fff;border-radius:16px;box-shadow:0 8px 24px -14px rgba(11,42,74,.35);padding:18px;margin-bottom:16px}
+.login{max-width:360px;margin:90px auto;text-align:center}
+.login input{width:100%;margin:14px 0;text-align:center;font-size:22px;letter-spacing:6px}
+.msg{color:var(--bad);font-size:14px;margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:#fff;border-radius:14px;padding:14px 16px;box-shadow:0 8px 24px -14px rgba(11,42,74,.35)}
+.stat b{display:block;font-size:26px;color:var(--navy)}.stat span{font-size:13px;color:var(--mut)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:12px}.bar input{flex:1;min-width:200px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{background:#f1f5f9;text-align:left;padding:10px;white-space:nowrap}td{padding:9px 10px;border-top:1px solid #edf1f6}
+tr:hover td{background:#fafcfe}
+.pc{font-weight:700;padding:3px 10px;border-radius:99px;background:#e7eef6;display:inline-block}
+.pc.h{background:#dff5e8;color:#157a45}.pc.m{background:#fff3d6;color:#8a5a00}.pc.l{background:#fde4e4;color:#b83232}
+.sum{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.chip{padding:8px 14px;border-radius:12px;font-weight:700;background:#e7eef6}.chip.ok{background:#dff5e8;color:#157a45}.chip.bad{background:#fde4e4;color:#b83232}.chip.no{background:#eee;color:#555}
+.cab{display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:12px;align-items:start}
+.qcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative}
+.qt{position:absolute;top:10px;right:12px;background:#e3f2fd;color:#1976d2;padding:3px 12px;border-radius:20px;font-size:13px;font-weight:700}
+.qtx{font-size:19px;font-weight:600;line-height:1.5;margin:18px 0;white-space:pre-wrap}
+.o{padding:11px 14px;border:1.5px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:16px}
+.o.c{background:#e4f6ec;border-color:#59b982;font-weight:700;color:#176a40}.o.w{background:#fdeaea;border-color:#e98c8c;color:#a52b2b}
+.nav{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;justify-items:center}
+.nv{width:40px;height:40px;border-radius:50%;padding:0;font-weight:700;border:2px solid #dbe4ee;background:#fff;color:#777}
+.nv.ok{background:var(--ok);border-color:var(--ok);color:#fff}.nv.bad{background:var(--bad);border-color:var(--bad);color:#fff}.nv.cur{box-shadow:0 0 0 4px rgba(14,159,142,.35)}
+.tot{background:linear-gradient(145deg,#0b2a4a,#13416f);color:#fff;border-radius:14px;padding:14px;text-align:center;margin-top:12px}
+.tot div{font:700 30px Consolas,monospace}.tot small{opacity:.8;letter-spacing:1px}
+.rv{border:1px solid var(--line);border-left:6px solid #bbb;border-radius:10px;padding:12px 14px;margin-bottom:10px;background:#fff}
+.rv.ok{border-left-color:var(--ok)}.rv.bad{border-left-color:var(--bad)}.rv.no{border-left-color:#999}
+.rv .h{display:flex;justify-content:space-between;font-weight:700;font-size:14px;margin-bottom:5px}.rv .t{font-weight:600;margin-bottom:8px;white-space:pre-wrap}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.cab{grid-template-columns:1fr}.nav{grid-template-columns:repeat(7,1fr)}}
+</style>
+</head>
+<body>
+
+<div id="login" class="card login">
+  <h2>KRK · Admin panel</h2>
+  <div style="color:var(--mut)">Natijalarni koʻrish</div>
+  <input type="password" id="pin" placeholder="PIN" onkeydown="if(event.key==='Enter')doLogin()">
+  <button onclick="doLogin()" style="width:100%">KIRISH</button>
+  <div class="msg" id="lmsg"></div>
+</div>
+
+<div id="app" class="hide">
+  <div class="top"><b>KRK test natijalari — Admin panel</b><div class="r"><button class="sec" onclick="loadList()">Yangilash</button><button class="sec" onclick="exportCsv()">CSV yuklab olish</button><button class="sec" onclick="logout()">Chiqish</button></div></div>
+  <div class="wrap">
+    <div id="listView">
+      <div class="stats" id="stats"></div>
+      <div class="card"><b>Testlar boʻyicha</b><div style="overflow:auto;margin-top:8px"><table><thead><tr><th>Test</th><th>Urinishlar</th><th>Oʻrtacha %</th><th>Eng yuqori %</th><th>Eng past %</th></tr></thead><tbody id="byTest"></tbody></table></div></div>
+      <div class="card">
+        <div class="bar"><input id="search" placeholder="F.I.Sh. yoki muassasa boʻyicha qidirish..." oninput="renderList()"><select id="testF" onchange="renderList()"><option value="">Barcha testlar</option></select></div>
+        <div id="cnt" style="color:var(--mut);font-size:14px;margin-bottom:8px"></div>
+        <div style="overflow:auto"><table><thead><tr><th>Vaqt</th><th>F.I.Sh.</th><th>Muassasa</th><th>Test</th><th>Ball</th><th>Foiz</th><th>Vaqt sarfi</th><th>Chiqish</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+      </div>
+    </div>
+
+    <div id="detView" class="hide">
+      <button class="sec" onclick="back()">← Roʻyxatga qaytish</button>
+      <div class="card" style="margin-top:12px">
+        <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap"><div><h3 id="dName"></h3><div id="dSub" style="color:var(--mut);font-size:14px"></div></div><button class="red" id="delBtn">Urinishni oʻchirish</button></div>
+        <div class="sum" id="dSum"></div>
+        <div style="display:flex;gap:8px"><button class="on" id="vCab" onclick="setV('cab')">Kabinet koʻrinishi</button><button class="sec" id="vList" onclick="setV('list')">Roʻyxat koʻrinishi</button></div>
+        <div id="cabView" class="cab">
+          <div><div class="qcard"><div class="qt" id="cTime"></div><div class="qtx" id="cText"></div><div id="cOpts"></div></div>
+            <div style="display:flex;gap:10px;justify-content:center;margin-top:12px"><button class="sec" onclick="cabStep(-1)">← Oldingi</button><button onclick="cabStep(1)">Keyingi →</button></div></div>
+          <div><div class="card" style="margin:0"><div class="nav" id="cNav"></div><div style="display:flex;gap:12px;justify-content:center;margin-top:10px;font-size:12px;color:var(--mut)"><span>🟢 Toʻgʻri</span><span>🔴 Notoʻgʻri</span><span>⚪ Javobsiz</span></div></div>
+            <div class="tot"><small>JAMI SARFLANGAN VAQT</small><div id="cTotal">00:00:00</div></div></div>
+        </div>
+        <div id="listBox" class="hide" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script>
+const API = window.KRK_API, $ = id => document.getElementById(id), L = ['A','B','C','D'];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let PIN = '', LIST = [], DET = null, CUR = 0, QS = [];
+const api = body => fetch(API, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(body)}).then(r => r.json());
+const pc = v => Number(String(v).replace(',','.')) || 0;
+const pcCls = v => v >= 70 ? 'h' : v >= 50 ? 'm' : 'l';
+function hms(s){ s=Math.max(0,Math.round(s||0)); const p=n=>n<10?'0'+n:''+n; return p(Math.floor(s/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60); }
+
+async function doLogin(){
+  PIN = $('pin').value.trim(); $('lmsg').textContent = 'Tekshirilmoqda...';
+  try{
+    const r = await api({action:'adminList', pin:PIN});
+    if (!r.success) return $('lmsg').textContent = r.msg || 'Xatolik';
+    sessionStorage.setItem('krk_admin', PIN); LIST = r.data;
+    $('login').classList.add('hide'); $('app').classList.remove('hide'); fillTests(); renderList();
+  }catch(e){ $('lmsg').textContent = 'Aloqa xatosi (config.js ni tekshiring)'; }
+}
+function logout(){ sessionStorage.removeItem('krk_admin'); location.reload(); }
+async function loadList(){
+  $('rows').innerHTML = '<tr><td colspan="9">Yuklanmoqda...</td></tr>';
+  const r = await api({action:'adminList', pin:PIN}); if (r.success){ LIST = r.data; fillTests(); renderList(); }
+}
+function fillTests(){
+  const cur = $('testF').value, names = [...new Set(LIST.map(x => x.test))].sort();
+  $('testF').innerHTML = '<option value="">Barcha testlar</option>' + names.map(n => `<option ${n===cur?'selected':''}>${esc(n)}</option>`).join('');
+}
+function filtered(){
+  const q = $('search').value.trim().toLowerCase(), f = $('testF').value;
+  return LIST.filter(x => (!f || x.test === f) && (!q || (x.name+' '+x.org+' '+x.region).toLowerCase().includes(q)));
+}
+function renderList(){
+  const rows = filtered();
+  const people = new Set(LIST.map(x => String(x.name).toLowerCase())).size;
+  const avg = LIST.length ? (LIST.reduce((a,x) => a + pc(x.percent), 0) / LIST.length).toFixed(1) : 0;
+  $('stats').innerHTML = `<div class="stat"><b>${LIST.length}</b><span>Jami urinishlar</span></div><div class="stat"><b>${people}</b><span>Ishtirokchilar</span></div><div class="stat"><b>${avg}%</b><span>Oʻrtacha natija</span></div><div class="stat"><b>${new Set(LIST.map(x=>x.test)).size}</b><span>Testlar soni</span></div>`;
+  const g = {}; LIST.forEach(x => (g[x.test] = g[x.test] || []).push(pc(x.percent)));
+  $('byTest').innerHTML = Object.keys(g).sort().map(k => { const a = g[k]; return `<tr><td><b>${esc(k)}</b></td><td>${a.length}</td><td>${(a.reduce((s,v)=>s+v,0)/a.length).toFixed(1)}</td><td>${Math.max(...a)}</td><td>${Math.min(...a)}</td></tr>`; }).join('') || '<tr><td colspan="5">Maʼlumot yoʻq</td></tr>';
+  $('cnt').textContent = 'Koʻrsatilmoqda: ' + rows.length;
+  $('rows').innerHTML = rows.map(x => `<tr><td>${esc(x.stamp)}</td><td><b>${esc(x.name)}</b></td><td>${esc(x.org)}</td><td>${esc(x.test)}</td><td>${esc(String(x.score).replace('.',','))} / ${esc(String(x.max).replace('.',','))}</td><td><span class="pc ${pcCls(pc(x.percent))}">${esc(x.percent)}%</span></td><td>${esc(x.time)}</td><td>${esc(x.cheats)}</td><td><button onclick="openAtt('${esc(x.id)}')">Javoblar</button></td></tr>`).join('') || '<tr><td colspan="9">Hozircha natija yoʻq.</td></tr>';
+}
+function exportCsv(){
+  const rows = filtered(), h = ['Vaqt','F.I.Sh.','Tuman','Muassasa','Test','Ball','Maks. ball','Foiz','Vaqt sarfi','Chiqishlar'];
+  const q = v => '"' + String(v == null ? '' : v).replace(/"/g,'""') + '"';
+  const csv = '\ufeff' + [h.map(q).join(';')].concat(rows.map(x => [x.stamp,x.name,x.region,x.org,x.test,x.score,x.max,x.percent,x.time,x.cheats].map(q).join(';'))).join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], {type:'text/csv;charset=utf-8'})); a.download = 'krk_natijalar.csv'; a.click();
+}
+
+/* ---------- batafsil ---------- */
+async function openAtt(id){
+  $('listView').classList.add('hide'); $('detView').classList.remove('hide');
+  $('dName').textContent = 'Yuklanmoqda...'; $('dSub').textContent = ''; $('dSum').innerHTML = '';
+  const r = await api({action:'adminAttempt', pin:PIN, id});
+  if (!r.success){ $('dName').textContent = r.msg || 'Xatolik'; return; }
+  DET = r; CUR = 0;
+  $('delBtn').onclick = async () => { if (!confirm('Bu urinish jadvaldan ham oʻchiriladi. Davom etasizmi?')) return; const d = await api({action:'adminDelete', pin:PIN, id}); if (d.success){ back(); loadList(); } else alert(d.msg); };
+  renderDet();
+}
+function back(){ $('detView').classList.add('hide'); $('listView').classList.remove('hide'); }
+const stOf = q => { const a = DET.answers[q.id]; return a === undefined || a === null ? 'no' : (Number(a) === q.correct ? 'ok' : 'bad'); };
+function renderDet(){
+  const i = DET.info; QS = DET.questions;
+  $('dName').textContent = i.name; $('dSub').textContent = `${i.org} | ${i.region} | ${i.test} | ${i.stamp}`;
+  let ok = 0, bad = 0, no = 0; QS.forEach(q => { const s = stOf(q); s==='ok' ? ok++ : s==='bad' ? bad++ : no++; });
+  $('dSum').innerHTML = `<div class="chip">Ball: ${esc(String(i.score).replace('.',','))} / ${esc(String(i.max).replace('.',','))} (${esc(i.percent)}%)</div><div class="chip ok">Toʻgʻri: ${ok}</div><div class="chip bad">Notoʻgʻri: ${bad}</div><div class="chip no">Javobsiz: ${no}</div><div class="chip">Vaqt: ${esc(i.time)}</div><div class="chip">Chiqishlar: ${esc(i.cheats)}</div>`;
+  setV('cab');
+}
+function setV(v){
+  $('vCab').className = v==='cab' ? 'on' : 'sec'; $('vList').className = v==='list' ? 'on' : 'sec';
+  $('cabView').classList.toggle('hide', v!=='cab'); $('listBox').classList.toggle('hide', v!=='list');
+  v === 'cab' ? drawCab() : drawList();
+}
+function optsHtml(q){
+  const a = DET.answers[q.id], g = a !== undefined && a !== null;
+  return q.opt.map((t,k) => !t ? '' : `<div class="o ${k===q.correct?'c':(g&&Number(a)===k?'w':'')}">${L[k]}) ${esc(t)}${k===q.correct?' ✓ (toʻgʻri javob)':(g&&Number(a)===k?' ✗ (oʻquvchi javobi)':'')}</div>`).join('')
+    + (g ? '' : '<div style="color:var(--bad);font-weight:700;font-size:14px">Javob berilmagan</div>');
+}
+function drawCab(){
+  if (CUR >= QS.length) CUR = 0;
+  let tot = 0;
+  $('cNav').innerHTML = QS.map((q,k) => { tot += DET.times[q.id] || 0; return `<button class="nv ${stOf(q)} ${k===CUR?'cur':''}" title="${hms(DET.times[q.id])}" onclick="cabGo(${k})">${k+1}</button>`; }).join('');
+  $('cTotal').textContent = hms(tot);
+  const q = QS[CUR];
+  $('cTime').textContent = 'Sarflangan vaqt: ' + hms(DET.times[q.id]);
+  $('cText').textContent = (CUR+1) + '. ' + q.q;
+  $('cOpts').innerHTML = optsHtml(q);
+}
+function cabGo(k){ CUR = k; drawCab(); }
+function cabStep(d){ CUR = Math.max(0, Math.min(QS.length-1, CUR+d)); drawCab(); }
+function drawList(){
+  $('listBox').innerHTML = QS.map((q,k) => { const s = stOf(q); return `<div class="rv ${s}"><div class="h"><span>${k+1}-savol (${q.pts} ball)</span><span>${s==='ok'?'✓ Toʻgʻri':s==='bad'?'✗ Notoʻgʻri':'— Javobsiz'} · ${hms(DET.times[q.id])}</span></div><div class="t">${esc(q.q)}</div>${optsHtml(q)}</div>`; }).join('');
+}
+
+(function(){ const p = sessionStorage.getItem('krk_admin'); if (p){ $('pin').value = p; doLogin(); } })();
+</script>
+</body>
+</html>
