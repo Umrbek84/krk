@@ -712,5 +712,38 @@ function drawBoard(){
 }
 init();
 </script>
+<script>
+/* Yangi alifbo (ö ğ ş ç): serverdan keladigan matnlarni ko'rsatishda avtomatik o'giradi */
+(function(){
+  var BL={school:1,schools:1,schedule:1,search:1,show:1,short:1,shorts:1,shift:1,teacher:1,check:1,change:1,chip:1,chips:1,watch:1,icho:1,youtube:1,chrome:1,chat:1,chatgpt:1,whatsapp:1,english:1,russian:1,google:1,sheets:1,charset:1};
+  var SKIP={SCRIPT:1,STYLE:1,TEXTAREA:1,NOSCRIPT:1,CODE:1,PRE:1};
+  function cw(w){
+    if(BL[w.toLowerCase()])return w;
+    w=w.replace(/([oOgG])[ʻ‘’`´'](?=[A-Za-z])/g,function(m,c){return {o:'ö',O:'Ö',g:'ğ',G:'Ğ'}[c]});
+    w=w.replace(/[Ss][Hh]/g,function(m){return m[0]==='S'?(m[1]==='H'?'Ş':'Ş'):'ş'});
+    w=w.replace(/[Cc][Hh]/g,function(m){return m[0]==='C'?'Ç':'ç'});
+    return w;
+  }
+  var RX=/https?:\/\/\S+|[\w.-]+@[\w.-]+\.\w+|[\w-]+\.(?:uz|com|org|me|net|ru)\b\S*|[A-Za-zʻʼ‘’`´']+/g;
+  function ct(s){
+    if(!s||!/[A-Za-z]/.test(s))return s;
+    return s.replace(RX,function(m){ if(/^(https?:|.*@|.*\.(uz|com|org|me|net|ru))/i.test(m)&&/[.:@\/]/.test(m))return m; return cw(m)});
+  }
+  var busy=false;
+  function walk(n){
+    if(n.nodeType===3){var v=n.nodeValue,c=ct(v);if(c!==v)n.nodeValue=c;return}
+    if(n.nodeType!==1||SKIP[n.tagName])return;
+    if(n.hasAttribute&&(n.hasAttribute('placeholder')||n.hasAttribute('title'))){
+      ['placeholder','title'].forEach(function(a){var v=n.getAttribute(a);if(v){var c=ct(v);if(c!==v)n.setAttribute(a,c)}});
+    }
+    for(var k=n.firstChild;k;k=k.nextSibling)walk(k);
+  }
+  function run(){ if(busy)return;busy=true;try{walk(document.body)}catch(e){}busy=false }
+  var t=null;
+  function later(){ clearTimeout(t); t=setTimeout(run,60) }
+  function init(){ run(); new MutationObserver(function(){ if(!busy)later() }).observe(document.body,{childList:true,subtree:true,characterData:true}); }
+  if(document.body)init(); else document.addEventListener('DOMContentLoaded',init);
+})();
+</script>
 </body>
 </html>
