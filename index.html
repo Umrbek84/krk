@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#2a1670">
-<title>KRK test | Qoʻshkoʻpir</title>
-<meta name="description" content="Pedagoglarning kasbiy rivojlanish kuni (KRK) uchun onlayn test. Qoʻshkoʻpir tumani.">
+<title>KRK test | Qöşköpir</title>
+<meta name="description" content="Pedagoglarning kasbiy rivojlaniş kuni (KRK) uçun onlayn test. Qöşköpir tumani.">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -229,27 +229,27 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
 <!-- BOSH SAHIFA -->
 <div id="home">
   <header class="top"><div class="wrap">
-    <a class="brand" href="#home"><span class="logo">KRK</span><span><b>Kasbiy rivojlanish kuni</b><br><small>Qoʻshkoʻpir tumani · Maktabgacha va maktab taʼlimi boʻlimi</small></span></a>
-    <nav class="nav"><a href="#home">Bosh sahifa</a><a href="#sched">📅 Jadval</a><a href="#board">🏆 Natijalar</a><a href="#foot">✉ Aloqa</a><a class="cta" href="#start">Testni boshlash</a></nav>
-  </div><div class="mnav"><a href="#home">Bosh sahifa</a><a href="#sched">📅 Jadval</a><a href="#board">🏆 Natijalar</a><a href="#foot">✉ Aloqa</a></div></header>
+    <a class="brand" href="#home"><span class="logo">KRK</span><span><b>Kasbiy rivojlaniş kuni</b><br><small>Qöşköpir tumani · Maktabgaça va maktab taʼlimi bölimi</small></span></a>
+    <nav class="nav"><a href="#home">Boş sahifa</a><a href="#sched">📅 Jadval</a><a href="#board">🏆 Natijalar</a><a href="#foot">✉ Aloqa</a><a class="cta" href="#start">Testni boşlaş</a></nav>
+  </div><div class="mnav"><a href="#home">Boş sahifa</a><a href="#sched">📅 Jadval</a><a href="#board">🏆 Natijalar</a><a href="#foot">✉ Aloqa</a></div></header>
 
   <div class="hero"><div class="wrap">
     <div>
-      <span class="eyebrow">2026–2027 oʻquv yili · Pedagoglar uchun</span>
-      <h1>KRK uchun <span>test topshirish</span></h1>
-      <p class="lead">Kasbiy rivojlanish kuni mavzulari boʻyicha bilimingizni sinab koʻring. Natija darhol chiqadi, xatolar tahlil qilinadi va natijangiz avtomatik saqlanadi.</p>
-      <div class="chips"><div>⏱ Vaqt: <b id="chTime">test boʻyicha</b></div><div>✔ Natija <b>darhol</b></div><div>📱 Telefonda ham ishlaydi</div></div>
+      <span class="eyebrow">2026–2027 öquv yili · Pedagoglar uçun</span>
+      <h1>KRK uçun <span>test topşiriş</span></h1>
+      <p class="lead">Kasbiy rivojlaniş kuni mavzulari böyiça bilimingizni sinab köring. Natija darhol çiqadi, xatolar tahlil qilinadi va natijangiz avtomatik saqlanadi.</p>
+      <div class="chips"><div>⏱ Vaqt: <b id="chTime">test böyiça</b></div><div>✔ Natija <b>darhol</b></div><div>📱 Telefonda ham işlaydi</div></div>
     </div>
     <div class="fcard" id="start">
       <div id="resume" class="resume hide"></div>
-      <h2>Testni boshlash</h2>
+      <h2>Testni boşlaş</h2>
       <p class="s">Maʼlumotlaringizni kiriting</p>
       <div id="pickWrap">
-      <label for="fDir">Yoʻnalish</label>
-      <select id="fDir" onchange="pickDir()"><option value="">Yoʻnalishni tanlang</option></select>
+      <label for="fDir">Yönaliş</label>
+      <select id="fDir" onchange="pickDir()"><option value="">Yönalişni tanlang</option></select>
       <label for="fSch">Maktab</label>
-      <select id="fSch" onchange="pickSch()" disabled><option value="">Avval yoʻnalishni tanlang</option></select>
-      <label for="fTch">F.I.Sh.</label>
+      <select id="fSch" onchange="pickSch()" disabled><option value="">Avval yönalişni tanlang</option></select>
+      <label for="fTch">F.I.Ş.</label>
       <select id="fTch" onchange="pickTch()" disabled><option value="">Avval maktabni tanlang</option></select>
       </div>
       <input id="fName" type="hidden"><div id="sugg" class="sugg hide"></div>
@@ -259,42 +259,42 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
       <label for="fTest">Test (mavzu)</label>
       <select id="fTest"><option value="">Yuklanmoqda...</option></select>
       <label for="fPin">PIN-kod</label>
-      <div class="pinbox"><input id="fPin" type="password" autocomplete="off" placeholder="Metodist bergan PIN-kod"><button type="button" onclick="togglePin()" aria-label="Koʻrsatish">👁</button></div>
+      <div class="pinbox"><input id="fPin" type="password" autocomplete="off" placeholder="Metodist bergan PIN-kod"><button type="button" onclick="togglePin()" aria-label="Körsatiş">👁</button></div>
       <div class="err" id="fErr"></div>
-      <button class="btn block" id="startBtn" onclick="startTest()">TESTNI BOSHLASH →</button>
+      <button class="btn block" id="startBtn" onclick="startTest()">TESTNI BOŞLAŞ →</button>
     </div>
   </div></div>
 
   <section class="wrap gal" id="gal">
-    <span class="ey">Kasbiy rivojlanish</span>
-    <h2>Oʻqituvchilar bilan birga oʻsamiz</h2>
-    <p class="gs">Har bir mavzu — Kasbiy rivojlanish kuni (KRK) va soati (KRS) mashgʻulotlari, soʻng esa bilimingizni sinovchi test.</p>
+    <span class="ey">Kasbiy rivojlaniş</span>
+    <h2>Öqituvçilar bilan birga ösamiz</h2>
+    <p class="gs">Har bir mavzu — Kasbiy rivojlaniş kuni (KRK) va soati (KRS) maşğulotlari, söng esa bilimingizni sinovçi test.</p>
     <div class="gcards">
-      <div class="gc"><div class="ph" style="background-image:url('img/krk-1.jpg'),url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230b3d91'/%3E%3Cstop offset='1' stop-color='%2318a3c6'/%3E%3C/linearGradient%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg transform='translate(40 40)' opacity='0.22'%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='7.699999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='220' fill='url(%23g)'/%3E%3Crect width='400' height='220' fill='url(%23p)'/%3E%3Cpath d='M120 220V105a80 80 0 0 1 160 0V220z' fill='rgba(255,255,255,.14)' stroke='%23f5c75a' stroke-width='3'/%3E%3Cpath d='M136 220V108a64 64 0 0 1 128 0V220z' fill='none' stroke='rgba(255,255,255,.55)' stroke-width='1.5'/%3E%3Cg transform='translate(200 132)' fill='%23fff'%3E%3Cpath d='M-46 -26c16-6 32-4 46 4v50c-14-8-30-10-46-4z' opacity='.95'/%3E%3Cpath d='M46 -26c-16-6-32-4-46 4v50c14-8 30-10 46-4z' opacity='.8'/%3E%3Ccircle cy='-48' r='9' fill='%23f5c75a'/%3E%3Cpath d='M0-62l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z' fill='%23f5c75a'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div><div class="tx"><span class="tg">KRK · 3 soat</span><h3>Kasbiy rivojlanish kuni</h3><p>Mavzu boʻyicha nazariy va amaliy mashgʻulot, hamkasblar bilan tajriba almashish.</p></div></div>
-      <div class="gc"><div class="ph" style="background-image:url('img/krk-2.jpg'),url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236a2fb8'/%3E%3Cstop offset='1' stop-color='%232f6fdd'/%3E%3C/linearGradient%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg transform='translate(40 40)' opacity='0.22'%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='7.699999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='220' fill='url(%23g)'/%3E%3Crect width='400' height='220' fill='url(%23p)'/%3E%3Cpath d='M120 220V105a80 80 0 0 1 160 0V220z' fill='rgba(255,255,255,.14)' stroke='%23f5c75a' stroke-width='3'/%3E%3Cpath d='M136 220V108a64 64 0 0 1 128 0V220z' fill='none' stroke='rgba(255,255,255,.55)' stroke-width='1.5'/%3E%3Cg transform='translate(200 130)'%3E%3Crect x='-52' y='-34' width='104' height='64' rx='5' fill='%23fff' opacity='.95'/%3E%3Crect x='-46' y='-28' width='92' height='52' rx='3' fill='%231a3f7a'/%3E%3Cpath d='M-30 -6l10 10 18-18' stroke='%23f5c75a' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 -8h26M8 4h20M-30 16h60' stroke='%23fff' stroke-width='3' stroke-linecap='round' opacity='.8'/%3E%3Crect x='-6' y='30' width='12' height='14' fill='%23fff' opacity='.9'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div><div class="tx"><span class="tg">KRS · 3 soat</span><h3>Kasbiy rivojlanish soati</h3><p>Maktabda mavzuni amaliyotda qoʻllash va refleksiya yuritish.</p></div></div>
-      <div class="gc"><div class="ph" style="background-image:url('img/krk-3.jpg'),url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230f6b5a'/%3E%3Cstop offset='1' stop-color='%231fb0a0'/%3E%3C/linearGradient%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg transform='translate(40 40)' opacity='0.22'%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='7.699999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='220' fill='url(%23g)'/%3E%3Crect width='400' height='220' fill='url(%23p)'/%3E%3Cpath d='M120 220V105a80 80 0 0 1 160 0V220z' fill='rgba(255,255,255,.14)' stroke='%23f5c75a' stroke-width='3'/%3E%3Cpath d='M136 220V108a64 64 0 0 1 128 0V220z' fill='none' stroke='rgba(255,255,255,.55)' stroke-width='1.5'/%3E%3Cg transform='translate(200 128)'%3E%3Ccircle r='30' fill='%23f5c75a'/%3E%3Ccircle r='23' fill='none' stroke='%23fff' stroke-width='2.5'/%3E%3Cpath d='M-12 1l8 9 17-18' stroke='%231a3f7a' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M-18 26l-8 26 14-7 8 12 4-28M18 26l8 26-14-7-8 12-4-28' fill='%23fff' opacity='.9'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div><div class="tx"><span class="tg">Test · natija</span><h3>Bilimni sinash</h3><p>Mavzu testini yeching — natija darhol chiqadi va umumiy jadvalda koʻrinadi.</p></div></div>
+      <div class="gc"><div class="ph" style="background-image:url('img/krk-1.jpg'),url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230b3d91'/%3E%3Cstop offset='1' stop-color='%2318a3c6'/%3E%3C/linearGradient%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg transform='translate(40 40)' opacity='0.22'%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='7.699999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='220' fill='url(%23g)'/%3E%3Crect width='400' height='220' fill='url(%23p)'/%3E%3Cpath d='M120 220V105a80 80 0 0 1 160 0V220z' fill='rgba(255,255,255,.14)' stroke='%23f5c75a' stroke-width='3'/%3E%3Cpath d='M136 220V108a64 64 0 0 1 128 0V220z' fill='none' stroke='rgba(255,255,255,.55)' stroke-width='1.5'/%3E%3Cg transform='translate(200 132)' fill='%23fff'%3E%3Cpath d='M-46 -26c16-6 32-4 46 4v50c-14-8-30-10-46-4z' opacity='.95'/%3E%3Cpath d='M46 -26c-16-6-32-4-46 4v50c14-8 30-10 46-4z' opacity='.8'/%3E%3Ccircle cy='-48' r='9' fill='%23f5c75a'/%3E%3Cpath d='M0-62l3 6h6l-5 4 2 6-6-4-6 4 2-6-5-4h6z' fill='%23f5c75a'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div><div class="tx"><span class="tg">KRK · 3 soat</span><h3>Kasbiy rivojlaniş kuni</h3><p>Mavzu böyiça nazariy va amaliy maşğulot, hamkasblar bilan tajriba almaşiş.</p></div></div>
+      <div class="gc"><div class="ph" style="background-image:url('img/krk-2.jpg'),url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%236a2fb8'/%3E%3Cstop offset='1' stop-color='%232f6fdd'/%3E%3C/linearGradient%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg transform='translate(40 40)' opacity='0.22'%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='7.699999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='220' fill='url(%23g)'/%3E%3Crect width='400' height='220' fill='url(%23p)'/%3E%3Cpath d='M120 220V105a80 80 0 0 1 160 0V220z' fill='rgba(255,255,255,.14)' stroke='%23f5c75a' stroke-width='3'/%3E%3Cpath d='M136 220V108a64 64 0 0 1 128 0V220z' fill='none' stroke='rgba(255,255,255,.55)' stroke-width='1.5'/%3E%3Cg transform='translate(200 130)'%3E%3Crect x='-52' y='-34' width='104' height='64' rx='5' fill='%23fff' opacity='.95'/%3E%3Crect x='-46' y='-28' width='92' height='52' rx='3' fill='%231a3f7a'/%3E%3Cpath d='M-30 -6l10 10 18-18' stroke='%23f5c75a' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M8 -8h26M8 4h20M-30 16h60' stroke='%23fff' stroke-width='3' stroke-linecap='round' opacity='.8'/%3E%3Crect x='-6' y='30' width='12' height='14' fill='%23fff' opacity='.9'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div><div class="tx"><span class="tg">KRS · 3 soat</span><h3>Kasbiy rivojlaniş soati</h3><p>Maktabda mavzuni amaliyotda qöllaş va refleksiya yuritiş.</p></div></div>
+      <div class="gc"><div class="ph" style="background-image:url('img/krk-3.jpg'),url(&quot;data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 220' preserveAspectRatio='xMidYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230f6b5a'/%3E%3Cstop offset='1' stop-color='%231fb0a0'/%3E%3C/linearGradient%3E%3Cpattern id='p' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg transform='translate(40 40)' opacity='0.22'%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-22' y='-22' width='44' height='44' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='7.699999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 0)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(0 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3Cg transform='translate(80 80)' opacity='0.16'%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3Crect x='-12' y='-12' width='24' height='24' fill='none' stroke='%23ffffff' stroke-width='1.2' transform='rotate(45)'/%3E%3Ccircle r='4.199999999999999' fill='none' stroke='%23ffffff' stroke-width='1.2'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='400' height='220' fill='url(%23g)'/%3E%3Crect width='400' height='220' fill='url(%23p)'/%3E%3Cpath d='M120 220V105a80 80 0 0 1 160 0V220z' fill='rgba(255,255,255,.14)' stroke='%23f5c75a' stroke-width='3'/%3E%3Cpath d='M136 220V108a64 64 0 0 1 128 0V220z' fill='none' stroke='rgba(255,255,255,.55)' stroke-width='1.5'/%3E%3Cg transform='translate(200 128)'%3E%3Ccircle r='30' fill='%23f5c75a'/%3E%3Ccircle r='23' fill='none' stroke='%23fff' stroke-width='2.5'/%3E%3Cpath d='M-12 1l8 9 17-18' stroke='%231a3f7a' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M-18 26l-8 26 14-7 8 12 4-28M18 26l8 26-14-7-8 12-4-28' fill='%23fff' opacity='.9'/%3E%3C/g%3E%3C/svg%3E&quot;)"></div><div class="tx"><span class="tg">Test · natija</span><h3>Bilimni sinaş</h3><p>Mavzu testini yeçing — natija darhol çiqadi va umumiy jadvalda körinadi.</p></div></div>
     </div>
   </section>
   <section class="wrap sched" id="sched">
-    <h2>Test topshirish jadvali</h2>
-    <p class="bs">Har bir mavzu testi buyruqning 15-ilovasi boʻyicha mavzuning KRS kunida ochiladi va keyin ochiq qoladi. Muddati hali kelmagan testlar yopiq turadi.</p>
-    <div class="today"><h3>🟢 Hozir ochiq testlar</h3><div class="tl" id="todayList"><span class="tnone">Yuklanmoqda...</span></div></div>
+    <h2>Test topşiriş jadvali</h2>
+    <p class="bs">Har bir mavzu testi buyruqning 15-ilovasi böyiça mavzuning KRS kunida oçiladi va keyin oçiq qoladi. Muddati hali kelmagan testlar yopiq turadi.</p>
+    <div class="today"><h3>🟢 Hozir oçiq testlar</h3><div class="tl" id="todayList"><span class="tnone">Yuklanmoqda...</span></div></div>
     <div class="miss hide" id="missBox"></div>
-    <div class="sbar"><label for="sDir" style="margin:0"><b>Yoʻnalishingiz:</b></label><select id="sDir" onchange="drawSched()"></select></div>
+    <div class="sbar"><label for="sDir" style="margin:0"><b>Yönalişingiz:</b></label><select id="sDir" onchange="drawSched()"></select></div>
     <div id="schedRows"></div>
   </section>
   <section class="wrap board" id="board">
     <h2>Natijalar</h2>
-    <p class="bs">Test topshirgan pedagoglar natijalari — topshirish tartibida.</p>
+    <p class="bs">Test topşirgan pedagoglar natijalari — topşiriş tartibida.</p>
     <div class="bstats" id="bStats"></div>
     <div class="bbar">
-      <input id="bSearch" placeholder="F.I.Sh. yoki maktab boʻyicha qidirish..." oninput="drawBoard()">
-      <select id="bFan" onchange="drawBoard()"><option value="">Barcha fanlar</option></select>
-      <select id="bSort" onchange="drawBoard()"><option value="time">Topshirish tartibi</option><option value="score">Ball boʻyicha</option></select>
+      <input id="bSearch" placeholder="F.I.Ş. yoki maktab böyiça qidiriş..." oninput="drawBoard()">
+      <select id="bFan" onchange="drawBoard()"><option value="">Barça fanlar</option></select>
+      <select id="bSort" onchange="drawBoard()"><option value="time">Topşiriş tartibi</option><option value="score">Ball böyiça</option></select>
     </div>
-    <div class="bhead"><span>№</span><span>F.I.Sh.</span><span>Maktab</span><span>Fan</span><span>Ball</span><span>Sana</span></div>
+    <div class="bhead"><span>№</span><span>F.I.Ş.</span><span>Maktab</span><span>Fan</span><span>Ball</span><span>Sana</span></div>
     <div id="bRows"><div class="bempty">Yuklanmoqda...</div></div>
-    <div class="bmore"><button class="btn ghost hide" id="bMore" onclick="BN+=30;drawBoard()">Yana koʻrsatish</button></div>
+    <div class="bmore"><button class="btn ghost hide" id="bMore" onclick="BN+=30;drawBoard()">Yana körsatiş</button></div>
   </section>
   <footer id="foot"><div class="wrap">
     <div class="f-top">
@@ -305,8 +305,8 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
         <div class="f-slogan">Taʼlim sifati — kelajak kafolati</div>
       </div>
     </div>
-    <p class="f-desc">Qoʻshkoʻpir tumani maktabgacha va maktab taʼlimi yoʻnalishidagi rasmiy monitoring va axborot portali. Kasbiy rivojlanish kuni (KRK) onlayn test tizimi muallifi.</p>
-    <h5>Rasmiy bogʻlanish va ijtimoiy tarmoqlar</h5>
+    <p class="f-desc">Qöşköpir tumani maktabgaça va maktab taʼlimi yönalişidagi rasmiy monitoring va axborot portali. Kasbiy rivojlaniş kuni (KRK) onlayn test tizimi muallifi.</p>
+    <h5>Rasmiy boğlaniş va ijtimoiy tarmoqlar</h5>
     <div class="f-links">
       <a href="https://t.me/umrbek_mamatov" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19c-.2 1-.8 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.7-7.9c.4-.3-.1-.5-.6-.2L6.6 12.9 2 11.5c-1-.3-1-1 .2-1.5L20.3 3c.8-.3 1.6.2 1.6 1.3z"/></svg>Telegram</a>
       <a href="https://instagram.com/umrbek_mamatov" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 7.2A4.8 4.8 0 1 0 12 16.8 4.8 4.8 0 0 0 12 7.2zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zM17.2 6a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2zM12 2.2c-2.6 0-3 0-4 .1-2.8.1-4.4 1.7-4.5 4.5-.1 1-.1 1.4-.1 4s0 3 .1 4c.1 2.800 1.700 4.400 4.500 4.500 1 .1 1.400.1 4 .1s3 0 4-.1c2.800-.1 4.400-1.700 4.500-4.500.1-1 .1-1.400.1-4s0-3-.1-4c-.1-2.800-1.700-4.400-4.500-4.500-1-.1-1.400-.1-4-.1z" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Instagram (@umrbek_mamatov)</a>
@@ -314,13 +314,13 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
       <a href="tel:+998996601415"><svg viewBox="0 0 24 24"><path d="M6.600 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200c.3-.3.7-.4 1-.2 1.100.4 2.300.6 3.600.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.500c.6 0 1 .4 1 1 0 1.300.2 2.500.6 3.600.1.300 0 .7-.2 1z"/></svg>+998 99 660 14 15</a>
       <a href="mailto:umrbek84@gmail.com"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>umrbek84@gmail.com</a>
     </div>
-    <div class="f-copy">© 2026 Umrbek Mamatov. Barcha huquqlar himoyalangan.</div>
+    <div class="f-copy">© 2026 Umrbek Mamatov. Barça huquqlar himoyalangan.</div>
   </div></footer>
 </div>
 
 <!-- TEST -->
 <div id="quiz" class="hide">
-  <div class="qbar"><div class="wrap"><div class="qtitle" id="qTitle"></div><div><button class="qb" onclick="exitQuiz()">Yopish ✕</button></div></div></div>
+  <div class="qbar"><div class="wrap"><div class="qtitle" id="qTitle"></div><div><button class="qb" onclick="exitQuiz()">Yopiş ✕</button></div></div></div>
   <div class="qlayout">
     <div class="qmain">
       <div class="qcard"><div class="qno" id="qNo"></div><div class="qtext" id="qText"></div><div id="opts"></div></div>
@@ -330,39 +330,39 @@ footer h5{font-family:'Times New Roman',Times,serif;font-size:16px;color:#fff;ma
       <div><div class="qnv" id="nav"></div>
         <div class="legend" style="margin-top:14px"><span><i></i>Javobsiz</span><span><i class="d"></i>Javob berilgan</span><span><i class="c"></i>Joriy</span></div></div>
       <div class="tcard" id="tcard"><small>⏱ QOLGAN VAQT</small><div class="timer" id="timer">00:00</div><div class="tbar"><div id="tbarIn"></div></div></div>
-      <button class="finbtn" onclick="askFinish()">TUGATISH</button>
+      <button class="finbtn" onclick="askFinish()">TUGATIŞ</button>
       <div class="who" id="who"></div>
     </aside>
   </div>
-  <div class="qfoot">Qoʻshkoʻpir tumani maktabgacha va maktab taʼlimi boʻlimi tomonidan tayyorlangan rasmiy sinov sahifasi</div>
+  <div class="qfoot">Qöşköpir tumani maktabgaça va maktab taʼlimi bölimi tomonidan tayyorlangan rasmiy sinov sahifasi</div>
 </div>
 
 <!-- YUBORISH -->
 <div id="sending" class="hide"><div class="rwrap"><div class="rcard">
   <div id="sendOk"><div class="spin"></div><h3>Natija yuborilmoqda...</h3><p style="color:var(--mut)">Sahifani yopmang.</p></div>
-  <div id="sendFail" class="hide"><h3 style="color:var(--bad)">Natijani yuborib boʻlmadi</h3><p id="sendMsg" style="color:var(--mut);margin:8px 0 16px"></p>
-    <p style="font-size:14px;margin-bottom:16px">Javoblaringiz saqlangan. Internetni tekshirib, qayta urinib koʻring.</p>
-    <button class="btn" onclick="finish()">Qayta yuborish</button></div>
+  <div id="sendFail" class="hide"><h3 style="color:var(--bad)">Natijani yuborib bölmadi</h3><p id="sendMsg" style="color:var(--mut);margin:8px 0 16px"></p>
+    <p style="font-size:14px;margin-bottom:16px">Javoblaringiz saqlangan. Internetni tekşirib, qayta urinib köring.</p>
+    <button class="btn" onclick="finish()">Qayta yuboriş</button></div>
 </div></div></div>
 
 <!-- NATIJA -->
 <div id="result" class="hide"><div class="rwrap"><div class="rcard">
   <div class="ring" id="ring"><div id="rPct"></div></div>
   <div id="rVerdict" class="verdict hide"></div>
-  <div class="rstats"><div><b id="rScore"></b><span>Ball</span></div><div><b id="rRight"></b><span>Toʻgʻri javob</span></div><div><b id="rTime"></b><span>Sarflangan vaqt</span></div></div>
+  <div class="rstats"><div><b id="rScore"></b><span>Ball</span></div><div><b id="rRight"></b><span>Töğri javob</span></div><div><b id="rTime"></b><span>Sarflangan vaqt</span></div></div>
   <div class="rwho" id="rWho"></div>
   <div style="font-size:13px;color:var(--mut)">Natijangiz tizimda avtomatik saqlandi.</div>
-  <div class="racts"><button class="btn" onclick="showReview()">Xatolarni tahlil qilish</button><button class="btn ghost" onclick="location.reload()">Bosh sahifa</button></div>
+  <div class="racts"><button class="btn" onclick="showReview()">Xatolarni tahlil qiliş</button><button class="btn ghost" onclick="location.reload()">Boş sahifa</button></div>
 </div></div></div>
 
 <!-- TAHLIL -->
 <div id="review" class="hide"><div class="rwrap" style="max-width:820px">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px"><h3>Javoblar tahlili</h3><button class="btn ghost" onclick="show('result')">← Natijaga qaytish</button></div>
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px"><h3>Javoblar tahlili</h3><button class="btn ghost" onclick="show('result')">← Natijaga qaytiş</button></div>
   <div id="rvList"></div>
 </div></div>
 
 <div id="modal" class="modal hide"><div class="mbox"><h3>Testni yakunlaysizmi?</h3><p id="mMsg"></p>
-  <div class="row"><button class="btn ghost" onclick="closeModal()">Yoʻq</button><button class="btn" onclick="finish()">Ha, yakunlash</button></div></div></div>
+  <div class="row"><button class="btn ghost" onclick="closeModal()">Yöq</button><button class="btn" onclick="finish()">Ha, yakunlaş</button></div></div></div>
 
 <script src="config.js"></script>
 <script>
@@ -382,15 +382,15 @@ function err(m){ $('fErr').textContent = m || ''; }
 
 /* ---------- boshlanish ---------- */
 async function init(){
-  if (!API || API.indexOf('PASTE') >= 0){ $('fTest').innerHTML='<option value="">Sayt sozlanmagan (config.js)</option>'; err('config.js ichiga Apps Script manzilini qoʻying.'); return; }
+  if (!API || API.indexOf('PASTE') >= 0){ $('fTest').innerHTML='<option value="">Sayt sozlanmagan (config.js)</option>'; err('config.js içiga Apps Script manzilini qoʻying.'); return; }
   try{
     const [r, t] = await Promise.all([fetch(API + '?action=tests').then(x => x.json()), fetch(API + '?action=teachers').then(x => x.json()).catch(() => ({success:false}))]);
     if (!r.success) throw new Error(r.msg);
     tests = r.data; TCH = (t && t.success) ? t.data : [];
     $('orgWrap').classList.toggle('hide', TCH.length > 0); $('pickWrap').classList.toggle('hide', !TCH.length); initPick();
-    if (TCH.length) $('fName').placeholder = 'Familiya yoki ismingizni yozing'; else $('fName').placeholder = 'Familiya Ism Sharif';
+    if (TCH.length) $('fName').placeholder = 'Familiya yoki ismingizni yozing'; else $('fName').placeholder = 'Familiya Ism Şarif';
     buildTests(); drawSched();
-  }catch(e){ $('fTest').innerHTML='<option value="">Yuklab boʻlmadi</option>'; err('Maʼlumotlarni yuklab boʻlmadi. Sahifani yangilang.'); }
+  }catch(e){ $('fTest').innerHTML='<option value="">Yuklab bölmadi</option>'; err('Maʼlumotlarni yuklab bölmadi. Sahifani yangilang.'); }
   loadBoard();
   try{
     const s = JSON.parse(localStorage.getItem(KEY) || 'null');
@@ -398,8 +398,8 @@ async function init(){
       S = s;
       const left = Math.round((S.deadline - Date.now())/1000);
       $('resume').classList.remove('hide');
-      $('resume').innerHTML = `<b>Tugallanmagan test bor:</b> ${esc(S.test)}<br>${left>0?'Qolgan vaqt: '+hms(left):'Vaqt tugagan — natijani yuborish mumkin.'}
-        <div class="row"><button class="btn" onclick="enterQuiz()">${left>0?'Davom ettirish':'Natijani yuborish'}</button><button class="btn ghost" onclick="dropSaved()">Bekor qilish</button></div>`;
+      $('resume').innerHTML = `<b>Tugallanmagan test bor:</b> ${esc(S.test)}<br>${left>0?'Qolgan vaqt: '+hms(left):'Vaqt tugagan — natijani yuboriş mumkin.'}
+        <div class="row"><button class="btn" onclick="enterQuiz()">${left>0?'Davom ettiriş':'Natijani yuboriş'}</button><button class="btn ghost" onclick="dropSaved()">Bekor qiliş</button></div>`;
     }
   }catch(e){}
 }
@@ -414,7 +414,7 @@ function _suggestOld(){
   const parts = v.split(/\s+/);
   const list = TCH.map((x,i) => ({x,i})).filter(o => { const n = o.x.name.toLowerCase(); return parts.every(p => n.includes(p)); }).slice(0, 8);
   box.innerHTML = list.length ? list.map(o => `<button type="button" onclick="pickT(${o.i})">${esc(o.x.name)}<small>${esc(o.x.school)}${o.x.dir ? ' · ' + esc(o.x.dir) : ''}</small></button>`).join('')
-    : '<div class="none">Roʻyxatda topilmadi. Ismingizni tekshiring yoki metodistga murojaat qiling.</div>';
+    : '<div class="none">Röyxatda topilmadi. Ismingizni tekşiring yoki metodistga murojaat qiling.</div>';
   box.classList.remove('hide');
 }
 
@@ -425,20 +425,20 @@ function fill(id, ph, items, val){ const e = $(id); e.innerHTML = `<option value
 function initPick(){
   if (!TCH.length) return;
   const dirs = [...new Set(TCH.map(x => x.dir).filter(Boolean))].sort((a,b) => a.localeCompare(b,'uz'));
-  fill('fDir','Yoʻnalishni tanlang', dirs.map(d => [d,d]));
-  fill('fSch','Avval yoʻnalishni tanlang', []); fill('fTch','Avval maktabni tanlang', []);
+  fill('fDir','Yönalişni tanlang', dirs.map(d => [d,d]));
+  fill('fSch','Avval yönalişni tanlang', []); fill('fTch','Avval maktabni tanlang', []);
 }
 function resetSel(){ SEL = null; $('fName').value = ''; $('tCard').classList.add('hide'); buildTests(); }
 function pickDir(){
   resetSel(); const d = $('fDir').value;
   const sch = [...new Set(TCH.filter(x => x.dir === d).map(x => x.school))].sort((a,b) => sNum(a) - sNum(b) || a.localeCompare(b));
-  fill('fSch', d ? 'Maktabni tanlang' : 'Avval yoʻnalishni tanlang', d ? sch.map(x => [x,x]) : []);
+  fill('fSch', d ? 'Maktabni tanlang' : 'Avval yönalişni tanlang', d ? sch.map(x => [x,x]) : []);
   fill('fTch','Avval maktabni tanlang', []);
 }
 function pickSch(){
   resetSel(); const d = $('fDir').value, m = $('fSch').value;
   const l = TCH.map((x,i) => [i,x]).filter(([i,x]) => x.dir === d && x.school === m).sort((a,b) => a[1].name.localeCompare(b[1].name,'uz'));
-  fill('fTch', m ? 'F.I.Sh. ingizni tanlang' : 'Avval maktabni tanlang', m ? l.map(([i,x]) => [i,x.name + (/mentor/i.test(x.role||x.note||'') ? ' (mentor)' : '')]) : []);
+  fill('fTch', m ? 'F.I.Ş. ingizni tanlang' : 'Avval maktabni tanlang', m ? l.map(([i,x]) => [i,x.name + (/mentor/i.test(x.role||x.note||'') ? ' (mentor)' : '')]) : []);
 }
 function pickTch(){ const v = $('fTch').value; if (v === '') return resetSel(); pickT(+v); }
 
@@ -446,8 +446,8 @@ function pickTch(){ const v = $('fTch').value; if (v === '') return resetSel(); 
 const mnum = t => parseInt((String(t.name).match(/(\d+)-mavzu/)||[0,0])[1],10) || 0;
 function stOf(t){
   if (t.closed) return ['b-past','Yopiq','past'];
-  if (t.state === 'open') return t.count > 0 ? ['b-on','🟢 Hozir ochiq','on'] : ['b-wait','⚠ Savollar tayyor emas (yopiq)','wait'];
-  if (t.state === 'upcoming') return ['b-up','Ochiladi: ' + t.opens,'up'];
+  if (t.state === 'open') return t.count > 0 ? ['b-on','🟢 Hozir oçiq','on'] : ['b-wait','⚠ Savollar tayyor emas (yopiq)','wait'];
+  if (t.state === 'upcoming') return ['b-up','Oçiladi: ' + t.opens,'up'];
   return ['b-past','Yopilgan','past'];
 }
 function drawSched(){
@@ -458,7 +458,7 @@ function drawSched(){
     if (SEL && SEL.dir){ const m = dirs.find(d => nrm(d) === nrm(SEL.dir)); if (m) sd.value = m; }
   }
   const on = tests.filter(t => t.state === 'open' && !t.closed && t.count > 0);
-  $('todayList').innerHTML = on.length ? on.map(t => `<button class="tchip" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">${esc(t.name)}</button>`).join('') : '<span class="tnone">Hozircha ochiq test yoʻq.</span>';
+  $('todayList').innerHTML = on.length ? on.map(t => `<button class="tchip" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">${esc(t.name)}</button>`).join('') : '<span class="tnone">Hozirça oçiq test yöq.</span>';
   const miss = tests.filter(t => !t.closed && t.state === 'open' && !(t.count > 0));
   const mb = $('missBox');
   if (miss.length){
@@ -469,16 +469,16 @@ function drawSched(){
   const list = tests.filter(t => t.dir === sd.value).sort((a,b) => mnum(a) - mnum(b));
   $('schedRows').innerHTML = list.map(t => {
     const [bc, bt, k] = stOf(t);
-    const btn = k === 'on' ? `<button class="btn" style="padding:7px 14px;font-size:14px;margin-top:6px" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">Yechish →</button>` : '';
+    const btn = k === 'on' ? `<button class="btn" style="padding:7px 14px;font-size:14px;margin-top:6px" onclick="pickTest('${esc(t.name).replace(/'/g,'&#39;')}')">Yeçiş →</button>` : '';
     return `<div class="srow ${k==='on'?'on':''} ${k==='wait'?'wait':''} ${k==='past'?'past':''}"><div class="n">${mnum(t)}</div>
       <div class="tt">${mnum(t)}-mavzu${t.topic ? `<small>${esc(t.topic)}</small>` : ''}</div>
       <div class="dt">${esc(t.opens)}</div><div class="st"><span class="badge ${bc}">${bt}</span><br>${btn}</div></div>`;
-  }).join('') || '<div class="tnone">Maʼlumot yoʻq.</div>';
+  }).join('') || '<div class="tnone">Maʼlumot yöq.</div>';
 }
 function pickTest(name){
-  if (TCH.length && !SEL){ err('Avval yoʻnalish, maktab va F.I.Sh. ingizni roʻyxatdan tanlang.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+  if (TCH.length && !SEL){ err('Avval yönaliş, maktab va F.I.Ş. ingizni röyxatdan tanlang.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
   const o = [...$('fTest').options].find(x => x.value === name && !x.disabled);
-  if (!o){ err('Bu test sizning yoʻnalishingiz uchun emas.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
+  if (!o){ err('Bu test sizning yönalişingiz uçun emas.'); window.scrollTo({top:0,behavior:'smooth'}); return; }
   $('fTest').value = name; err(''); window.scrollTo({top:0,behavior:'smooth'});
 }
 function pickT(i){
@@ -492,9 +492,9 @@ function buildTests(){
   const sel = $('fTest');
   if (TCH.length && !SEL){ sel.innerHTML = '<option value="">Avval ismingizni tanlang</option>'; return; }
   const mine = tests.filter(t => !TCH.length || !SEL || !t.dir || nrm(t.dir) === 'hammasi' || nrm(t.dir) === nrm(SEL.dir));
-  if (!mine.length){ sel.innerHTML = '<option value="">Siz uchun test topilmadi</option>'; return; }
+  if (!mine.length){ sel.innerHTML = '<option value="">Siz uçun test topilmadi</option>'; return; }
   const vis = mine.filter(t => stOf(t)[2] === 'on').sort((a,b) => (stOf(a)[2]==='on'?0:1) - (stOf(b)[2]==='on'?0:1) || mnum(a) - mnum(b));
-  sel.innerHTML = '<option value="">' + (vis.length ? 'Testni tanlang' : 'Hozircha ochiq test yoʻq') + '</option>' + vis.map(t => {
+  sel.innerHTML = '<option value="">' + (vis.length ? 'Testni tanlang' : 'Hozirça oçiq test yöq') + '</option>' + vis.map(t => {
     const k = stOf(t)[2], ok = k === 'on';
     const tag = ok ? '' : ' — ' + stOf(t)[1].replace('🟢 ','');
     return `<option value="${esc(t.name)}" ${ok?'':'disabled'}>${esc(t.name)}${ok?` (${t.count} ta savol, ${t.minutes} daq)`:''}${tag}</option>`;
@@ -504,12 +504,12 @@ function dropSaved(){ try{localStorage.removeItem(KEY);}catch(e){} S=null; $('re
 
 async function startTest(){
   let name=$('fName').value.trim(), org=$('fOrg').value.trim(); const test=$('fTest').value, pin=$('fPin').value.trim();
-  if (TCH.length){ if (!SEL) return err('Ismingizni roʻyxatdan tanlang.'); name = SEL.name; org = SEL.school; }
-  if (!TCH.length && name.split(/\s+/).length < 2) return err('F.I.Sh. ni toʻliq kiriting (familiya va ism).');
+  if (TCH.length){ if (!SEL) return err('Ismingizni röyxatdan tanlang.'); name = SEL.name; org = SEL.school; }
+  if (!TCH.length && name.split(/\s+/).length < 2) return err('F.I.Ş. ni töliq kiriting (familiya va ism).');
   if (!org) return err('Maktab nomini kiriting.');
   if (!test) return err('Fanni (testni) tanlang.');
   if (!pin) return err('PIN-kodni kiriting.');
-  err(''); $('startBtn').disabled = true; $('startBtn').textContent = 'Tekshirilmoqda...';
+  err(''); $('startBtn').disabled = true; $('startBtn').textContent = 'Tekşirilmoqda...';
   try{
     const r = await api({action:'start', name, school:org, test, pin});
     if (!r.success) throw new Error(r.msg);
@@ -517,15 +517,15 @@ async function startTest(){
     const qs = (hasInfo ? r.questions.slice() : shuf(r.questions.slice())).map(q => ({id:q.id, type:q.type, q:q.q, img:q.img||'', opt:q.opt, ord: q.noShuffle ? [0,1,2,3] : shuf([0,1,2,3])}));
     S = {token:r.token, test, minutes:r.minutes, note:r.note||'', qs, ans:{}, times:{}, cheats:0, cur:0, deadline:Date.now()+r.minutes*60000, user:{name,org}};
     save(); enterQuiz();
-  }catch(e){ err(e.message || 'Aloqa xatosi. Qayta urinib koʻring.'); }
-  $('startBtn').disabled = false; $('startBtn').textContent = 'TESTNI BOSHLASH →';
+  }catch(e){ err(e.message || 'Aloqa xatosi. Qayta urinib köring.'); }
+  $('startBtn').disabled = false; $('startBtn').textContent = 'TESTNI BOŞLAŞ →';
 }
 
 /* ---------- test ---------- */
 function mj(el){ if (window.renderMathInElement && el) try{ renderMathInElement(el,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false}); }catch(e){} }
 const THEMES = {
   mat:['x²','∫','π','√','sin','θ','log','∑','±'],
-  kim:['H₂O','NaCl','CO₂','pH','O₂','H₂SO₄','Fe','⇌','CH₄'],
+  kim:['H₂O','NaCl','CO₂','pH','O₂','H₂SO₄','Fe','⇌','Ç₄'],
   fiz:['F=ma','E=mc²','U=IR','Ω','λ','v=s/t','ρ','ΔT','g'],
   bio:['DNK','ATF','RNK','CO₂','O₂','H₂O','pH','♀','♂'],
   inf:['{ }','</>','1011','if','for','==','&&','#',';'],
@@ -586,7 +586,7 @@ function jump(i){ stamp(); S.cur = i; save(); renderQ(); window.scrollTo(0,0); }
 function go(d){ const n = Math.max(0, Math.min(S.qs.length-1, S.cur+d)); if (n !== S.cur) jump(n); }
 function askFinish(){
   const left = S.qs.filter(q => q.type !== 'info' && !isDone(q)).length;
-  $('mMsg').textContent = left > 0 ? `Hali ${left} ta savolga javob bermadingiz.` : 'Barcha savollarga javob berdingiz.';
+  $('mMsg').textContent = left > 0 ? `Hali ${left} ta savolga javob bermadingiz.` : 'Barça savollarga javob berdingiz.';
   $('modal').classList.remove('hide');
 }
 function closeModal(){ $('modal').classList.add('hide'); }
@@ -613,7 +613,7 @@ function showResult(){
   $('ring').style.background = `conic-gradient(var(--teal) ${r.percent*3.6}deg,#e3ebf3 0)`;
   $('rPct').textContent = r.percent + '%';
   const v = $('rVerdict');
-  if (r.verdict){ v.className = 'verdict ' + (r.verdict==='Oʻtdi'?'ok':'bad'); v.textContent = r.verdict; } else v.className = 'verdict hide';
+  if (r.verdict){ v.className = 'verdict ' + (r.verdict==='Ötdi'?'ok':'bad'); v.textContent = r.verdict; } else v.className = 'verdict hide';
   $('rScore').textContent = String(r.score).replace('.',',') + ' / ' + String(r.max).replace('.',',');
   $('rRight').textContent = r.right + ' / ' + r.total;
   $('rTime').textContent = r.time;
@@ -632,9 +632,9 @@ function showReview(){
     const rv = map[q.id], a = S.ans[q.id], given = a !== undefined && String(a).trim() !== '';
     const st = !given ? 'no' : (rv.ok ? 'ok' : 'bad');
     let body;
-    if (q.type === 'open') body = `<div class="ro ${rv.ok?'c':(given?'w':'')}">Sizning javobingiz: ${given?esc(a):'—'}</div>` + (rv.ok ? '' : `<div class="ro c">Toʻgʻri javob: ${esc(rv.correct)}</div>`);
+    if (q.type === 'open') body = `<div class="ro ${rv.ok?'c':(given?'w':'')}">Sizning javobingiz: ${given?esc(a):'—'}</div>` + (rv.ok ? '' : `<div class="ro c">Töğri javob: ${esc(rv.correct)}</div>`);
     else body = q.opt.map((o,i) => !o ? '' : `<div class="ro ${i===rv.correct?'c':(i===a?'w':'')}">${L[i]}) ${esc(o)}${i===rv.correct?' ✓':(i===a?' ✗':'')}</div>`).join('');
-    return `<div class="rv ${st}"><div class="h"><span>${n}-savol</span><span>${st==='ok'?'✓ Toʻgʻri':st==='bad'?'✗ Notoʻgʻri':'— Javobsiz'}</span></div>${img}<div class="t">${esc(q.q)}</div>${body}</div>`;
+    return `<div class="rv ${st}"><div class="h"><span>${n}-savol</span><span>${st==='ok'?'✓ Töğri':st==='bad'?'✗ Notöğri':'— Javobsiz'}</span></div>${img}<div class="t">${esc(q.q)}</div>${body}</div>`;
   }).join('');
   show('review'); mj($('rvList'));
 }
@@ -646,14 +646,14 @@ async function loadBoard(){
     if (!r.success) throw new Error(r.msg);
     BOARD = r.data;
     const fans = [...new Set(BOARD.map(x => x.test))].sort();
-    $('bFan').innerHTML = '<option value="">Barcha fanlar</option>' + fans.map(f => `<option>${esc(f)}</option>`).join('');
+    $('bFan').innerHTML = '<option value="">Barça fanlar</option>' + fans.map(f => `<option>${esc(f)}</option>`).join('');
     drawBoard();
-  }catch(e){ $('bRows').innerHTML = '<div class="bempty">Natijalarni yuklab boʻlmadi.</div>'; }
+  }catch(e){ $('bRows').innerHTML = '<div class="bempty">Natijalarni yuklab bölmadi.</div>'; }
 }
 function drawBoard(){
   const q = $('bSearch').value.trim().toLowerCase(), f = $('bFan').value, by = $('bSort').value;
   const avg = BOARD.length ? (BOARD.reduce((a,x) => a + x.percent, 0) / BOARD.length).toFixed(1).replace('.',',') : '0';
-  $('bStats').innerHTML = `<div><b>${BOARD.length}</b><span>Topshirganlar</span></div><div><b>${avg}%</b><span>Oʻrtacha natija</span></div><div><b>${new Set(BOARD.map(x=>x.test)).size}</b><span>Fanlar</span></div>`;
+  $('bStats').innerHTML = `<div><b>${BOARD.length}</b><span>Topşirganlar</span></div><div><b>${avg}%</b><span>Örtaça natija</span></div><div><b>${new Set(BOARD.map(x=>x.test)).size}</b><span>Fanlar</span></div>`;
   let rows = BOARD.filter(x => (!f || x.test === f) && (!q || (x.name+' '+x.school).toLowerCase().includes(q)));
   if (by === 'score') rows = rows.slice().sort((a,b) => b.percent - a.percent || a.n - b.n);
   const total = rows.length; rows = rows.slice(0, BN);
@@ -661,7 +661,7 @@ function drawBoard(){
     const pos = by === 'score' ? i+1 : x.n, g = by === 'score' && i < 3 ? ' g'+(i+1) : '';
     return `<div class="brow"><span class="no${g}">${pos}</span><span class="nm"><b>${esc(x.name)}</b></span><span class="sch">${esc(x.school)}</span><span class="fn">${esc(x.test)}</span>
       <span class="scw"><span class="sc">${String(x.score).replace('.',',')} ball</span><span class="pc">${String(x.percent).replace('.',',')}%${x.verdict?' · '+esc(x.verdict):''}</span></span><span class="dt"><small>${esc(x.stamp.slice(0,16))}</small></span></div>`;
-  }).join('') || '<div class="bempty">Hozircha natija yoʻq.</div>';
+  }).join('') || '<div class="bempty">Hozirça natija yöq.</div>';
   $('bMore').classList.toggle('hide', total <= BN);
 }
 init();
