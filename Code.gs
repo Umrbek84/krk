@@ -14,7 +14,7 @@
  */
 
 const SPREADSHEET_ID = '';   // Jadvalga bogʻlangan (Extensions → Apps Script) skriptda boʻsh qoldiring
-const ADMIN_PIN = '7788';    // <-- ALBATTA OʻZGARTIRING!
+const ADMIN_PIN = 'PIN-NI-SHU-YERGA-YOZING';    // Haqiqiy PIN faqat Apps Script ichida saqlanadi, repoga yozilmaydi
 const SERVICE = ['Testlar', 'PIN_Codes', 'Natijalar', 'Javoblar'];
 const SESSION_HOURS = 6;
 
